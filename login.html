@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <style>
+      body {
+        background: url("./images/background2.jpg") no-repeat;
+      }
+      
+  </style>
+  
+</head>
+<body>
+  
+  <div class="navbar_container">
+    <nav class="navbar">
+      <a href="index.html" id="logo"> Insert Logo</a>
+      <ul>
+        <li class="navbar_link"><a href="index.html">Home</a></li>
+        <li class="navbar_link"><a href="learn.html">Learn</a></li>
+        <li class="navbar_link"><a href="index.html">Test Your Knowledge</a></li>
+        <li class="navbar_link"><a href="index.html">Results</a></li>
+        <li class="navbar_link"><a href="login.html">Login</a></li>
+        <li class="navbar_link"><a href="signup.html" id="signup">Sign Up</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <form action="index.html" class="loginform">
+		<h1>Login</h1>
+		<hr id = "hrform">
+		<input type="text" placeholder="Username" required>
+		<input type="password" placeholder="Password" required>
+		<br>
+		<input type="submit" name="" id="loginsubmit" value="Login">
+		<p>New Here?<a href="signup.html">&nbsp Create an Account.</a></p>
+		 <div class="social_media">
+			 	<a href="#" class ="social_icons">
+					 <i class="fab fa-facebook-f"></i>
+				 </a>
+			 	<a href="#" class ="social_icons">
+					 <i class="fab fa-twitter"></i>
+				 </a>
+			 	<a href="#" class ="social_icons">
+					 <i class="fab fa-google-plus-g"></i>
+         </a>
+		 </div>
+	</form>
+</body>
+</html>
