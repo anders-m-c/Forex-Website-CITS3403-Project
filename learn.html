@@ -7,8 +7,14 @@
   <title>Document</title>
   <link rel="stylesheet" href="main_navbar.css">
   <style>
+    body {
+      
+      background-color:#1a1c33;
+      
+
+    }
     .navbar {
-      background-color:#212329;
+      /* background-color:#212329; */
     }
     .navbar a {
     color: #10dfd8;
@@ -30,34 +36,42 @@
       height: 50vh;
       width: 35vh;
       margin: 20px;
-      background-color: blanchedalmond;
+      background-color: #1a1c33;
       position: relative;
       border-radius: 10px;
+      border: solid 1px white;
+      color: rebeccapurple
       
     }
     .content-info img {
       height: 25vh;
-      width: 35vh;
+      width: 100%;
       border-radius: 10px 10px 0px 0px;
+      object-fit: cover;
       /* border-radius: 10px; */
     }
     .content-text  {
       padding: 0 10px;
       
     } 
+    .content-text h2 {
+      color: #FFF;
+    }
+    .content-text p {
+      color: hsla(0,0%,100%,.64);
+    }
     .beginner h1 {
-      align-self: flex-start;
-      left: 410px; 
-      top: 10px; 
-      position: absolute;
+      justify-content: flex-end;
+      color: #fe2f4d;
+      
     }
     .btn-next {
       text-decoration: none;
-      border: solid 1px aquamarine;
-      background-color: aquamarine;
+      border: solid 1px #fe2f4d;
+      background-color: 1a1c33;
       outline: none;
       width: 600px;
-      height: 100px;
+      height: 100px;  
       margin-bottom: 20px;
       border-radius: 10px;
     }
@@ -67,11 +81,14 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+      margin-top: 30px;
       /* height: 100%; */
       
     }
+    
     .btn-next a {
       height: 100%;
+      color: #FFF;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -81,12 +98,12 @@
     }
     .content-btn {
       text-decoration: none;
-      border: solid 1px aquamarine;
-      background-color: aquamarine;
+      border: solid 2px #fe2f4d;
+      /* background-color: aquamarine; */
       outline: none;
       width: 20vh;
       padding: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-radius: 10px;
       position: absolute;
       bottom: 0%;
@@ -98,6 +115,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      color: white;
     }
   
   </style>
@@ -119,103 +137,103 @@
 
   
   <div class ="wrapper">
+    <div class="beginner">
+      <h1>Beginner Content</h1>
+    </div>
     <div class="content-row">
-      <div class="beginner">
-        <h1>Beginner</h1>
-      </div>
       <div class="content-info">
-        <a href="Content Pages/what-is-forex.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/what-is-forex.html"><img src="images/what-is-forex-img.png" alt=""></a>
         <div  class="content-text">
           <h2>What is Forex?</h2>
           <p >Quick description of forex – quick comparison to stocks</p>
           <div class="content-btn">
-            <a href="Content Pages/what-is-forex.html">See More</a>
+            <a href="content-pages/what-is-forex.html">See More</a>
           </div>
         </div>
         
       </div>
       <div class="content-info">
-        <a href="Content Pages/buying-and-selling.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/buying-and-selling.html"><img src="images/buy-sell-img.jpg" alt=""></a>
         <div  class="content-text">
           <h2>Buying and Selling Currency Pairs</h2>
           <p>What currencies and pairs exist</p>
           <div class="content-btn">
-            <a href="Content Pages/buying-and-selling.html">See More</a>
+            <a href="content-pages/buying-and-selling.html">See More</a>
           </div>
         </div>
       </div>
       <div class="content-info">
-        <a href="Content Pages/how-to-make-money.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/how-to-make-money.html"><img src="images/how-to-make-money.jpg" alt=""></a>
         <div  class="content-text">
           <h2>How to Make Money</h2>
           <p>Some of the more popular ways that traders participate in the forex market is through the spot market, futures, options,
           and exchange-traded funds.</p>
           <div class="content-btn">
-            <a href="Content Pages/how-to-make-money.html">See More</a>
+            <a href="content-pages/how-to-make-money.html">See More</a>
           </div>
         </div>
       </div>
     </div>
     <div class="content-row">
       <div class="content-info">
-        <a href="Content Pages/pips.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/pips.html"><img src="images/What-is-a-pip2.jpg" alt=""></a>
         <div  class="content-text">
           <h2>Pips</h2>
           <p >What it is, how to calculate its value</p>
           <div class="content-btn">
-            <a href="Content Pages/pips.html">See More</a>
+            <a href="content-pages/pips.html">See More</a>
           </div>
         </div>
       </div>
       <div class="content-info">
-        <a href="Content Pages/lot-sizes.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/lot-sizes.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
         <div  class="content-text">
           <h2>Lot Sizes</h2>
           <p>Conversions, calculating profit and loss</p>
           <div class="content-btn">
-            <a href="Content Pages/lot-sizes.html">See More</a>
+            <a href="content-pages/lot-sizes.html">See More</a>
           </div>
         </div>
       </div>
       <div class="content-info">
-        <a href="Content Pages/types-of-orders.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/types-of-orders.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
         <div  class="content-text">
           <h2>Types of Orders</h2>
           <p>Explanation of each of the types of orders</p>
           <div class="content-btn">
-            <a href="Content Pages/types-of-orders.html">See More</a>
+            <a href="content-pages/types-of-orders.html">See More</a>
           </div>
         </div>
       </div>
     </div>
     <div class="content-row">
       <div class="content-info">
-        <a href="Content Pages/demo-vs-real.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/demo-vs-real.html"><img src="images/demo-vs-live-img.jpg" alt=""></a>
         <div  class="content-text">
           <h2>Demo Vs Live</h2>
           <p >Explain the difference</p>
           <div class="content-btn">
-            <a href="Content Pages/demo-vs-real.html">See More</a>
+            <a href="content-pages/demo-vs-real.html">See More</a>
           </div>
         </div>
       </div>
       <div class="content-info">
-        <a href="Content Pages/trading-sessions.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/trading-sessions.html"><img src="images/forex-sessions-img.jpg" alt=""></a>
         <div  class="content-text">
           <h2>Trading Sessions</h2>
           <p>Different sessions. Best times + days to trade.</p>
           <div class="content-btn">
-            <a href="Content Pages/trading-sessions.html">See More</a>
+            <a href="content-pages/trading-sessions.html">See More</a>
           </div>
         </div>
       </div>
       <div class="content-info">
-        <a href="Content Pages/candles.html"><img src="images/what-is-forex-img.jpg" alt=""></a>
+        <a href="content-pages/candles.html"><img src="images/candlesticks-img.png" alt=""></a>
         <div  class="content-text">
           <h2>Candles</h2>
           <p>What they are on a chart, explain how they work</p>
           <div class="content-btn">
-            <a href="Content Pages/candles.html">See More</a>
+            <a href="content-pages/candles.html">See More</a>
           </div>
         </div>
       </div>
@@ -228,7 +246,7 @@
     </button>
     </div> -->
     <div class="btn-next">
-        <a href="/learn2.html">
+        <a href="./learn2.html">
         <h3>Intermediate Topics</h3>
         <p>Take Your Knowledge to the Next Level with our Intermediate Topics</p>
       </a>

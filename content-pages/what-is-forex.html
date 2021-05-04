@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="content-style.css">
+  <link rel="stylesheet" href="../main_navbar.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"/>
+  <title>What Is Forex?</title>
+</head>
+<body>
+  <div class="navbar_container">
+    <nav class="navbar" style="background-color:#212329;">
+      <a href="index.html" id="logo"> Insert Logo</a>
+      <ul>
+        <li class="navbar_link"><a href="../index.html">Home</a></li>
+        <li class="navbar_link"><a href="../learn.html">Learn</a></li>
+        <li class="navbar_link"><a href="../index.html">Test Your Knowledge</a></li>
+        <li class="navbar_link"><a href="../index.html">Results</a></li>
+        <li class="navbar_link"><a href="../login.html">Login</a></li>
+        <li class="navbar_link"><a href="../signup.html" id="signup">Sign Up</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class ="page-wrapper">
+    <div class="content-navbar" id = "navbar">
+      <a href="../learn.html">Beginner Content</a>
+      <ul>
+        <li><a href="buying-and-selling.html">Buying and Selling</a></li>
+        <li><a href="how-to-make-money.html">How to Make Money</a></li>
+        <li><a href="pips.html">Pips</a></li>
+        <li><a href="lot-sizes.html">Lots</a></li>
+        <li><a href="types-of-orders.html">Types of Orders</a></li>
+        <li><a href="demo-vs-real.html">Demo Vs Real</a></li>
+        <li><a href="trading-sessions.html">Trading Sessions</a></li>
+        <li><a href="candles.html">Candles</a></li>
+      </ul>
+      <a href="../learn2.html">Intermediate Content</a>
+      <ul>
+        <li><a href="support-and-resistance.html">Support and Resistance</a></li>
+        <li><a href="trends.html">Trends</a></li>
+        <li><a href="trading-support-and-resistance.html">Trading Support and Reistance</a></li>
+        <li><a href="candlestick-patterns.html">Candlestick Patterns</a></li>
+        <li><a href="moving-averages.html">Moving Averages</a></li>
+      </ul>
+    </div>
+    <div class="content-wrapper">
+      <div class="content">
+        <h1>What is Forex?</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error at magnam dolore
+          unde dolores perferendis optio distinctio, quisquam dolorum facere iusto culpa laborum qui facilis. Odio quam sequi
+          eaque.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error at magnam dolore
+          unde dolores perferendis optio distinctio, quisquam dolorum facere iusto culpa laborum qui facilis. Odio quam sequi
+          eaque.
+        </p>
+        <h1>What is Forex?</h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis error at magnam dolore 
+          unde dolores perferendis optio distinctio, quisquam dolorum facere iusto culpa laborum qui facilis. Odio quam sequi eaque.
+      </div>
+    </div>
+  </div>
+  <script>
+    window.onscroll = function () { myFunction() };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script>
+</body>
+</html>
