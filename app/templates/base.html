@@ -1,0 +1,47 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Mastering Forex</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/nav-bar.css') }}">
+        {% block stylesheet %}{% endblock %}
+        {% else %}
+        <title>Mastering Forex</title>
+        {% endif %}
+        
+        {% block javascript %}{% endblock %}
+    </head>
+    {% block signin %}{% endblock %}
+    <body onload="onload()">
+        <div class="navbar_container">
+            <nav class="navbar">
+                <a href="{{ url_for('index') }}" id="logo"> Insert Logo</a>
+                <ul>
+                    <li class="navbar_link"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li class="navbar_link"><a href="{{ url_for('learn') }}">Learn</a></li>
+                    <li class="navbar_link"><a href="{{ url_for('quiz') }}">Test Your Knowledge</a></li>
+                    {% if not current_user.is_anonymous %}
+                    <li class="navbar_link"><a href="{{ url_for('results') }}">Results</a></li>
+                    {% endif %}
+                    
+                    {% if current_user.is_anonymous %}
+                    <li class="navbar_link"><a href="{{ url_for('signin') }}">Sign In</a></li>
+                    <li class="navbar_link"><a href="{{ url_for('signup') }}" id="signup">Sign Up</a></li>
+                    {% else %}
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        <!--This prints out the flash messages, e.g. Log in to view this page-->
+        <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %} -->
+        {% block content %}{% endblock %}
+    </body>
+</html>
