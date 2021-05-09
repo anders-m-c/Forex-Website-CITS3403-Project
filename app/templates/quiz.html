@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz3.css') }}">
+{% endblock %}
+
+<!-- ADD JAVASCRIPT TO ADD AN EVENTLISTENER TO SEE WHERE SOMEONE CLICKED AND SEE IF ITS CORRECT -->
+{% block javascript %}
+<script>
+  function onload() {
+    let question = '{{ques[qNum].question}}';
+    let choice1 = '{{ques[qNum].choice1}}';
+    let choice2 = '{{ques[qNum].choice2}}';
+    let choice3 = '{{ques[qNum].choice3}}';
+    let choice4 = '{{ques[qNum].choice4}}';
+
+    document.getElementById('question_box').innerHTML = question;
+    document.getElementById('opt1').innerHTML = choice1;
+    document.getElementById('opt2').innerHTML = choice2;
+    document.getElementById('opt3').innerHTML = choice3;
+    document.getElementById('opt4').innerHTML = choice4;
+    console.log('{{qNum}}');
+    if('{{qNum}}' <= 0){
+      document.getElementById("prev_btn").style.visibility='hidden';
+    }
+  }
+</script>
+{% endblock %}
+
+{% block content %}
+  <div class="quiz_wrapper" onload="onload()">
+    <div class="upper_buttons">
+      <a href="{{ url_for('previous') }}" id ="prev_btn"> &lt Previous</a>
+      <p> Question {{qNum+1}} of 20</p>
+      <a href="{{ url_for('quiz') }}" id ="next_btn"> Next &gt</a>
+    </div>
+    <div class="wrapper">
+      <div class="quiz_question">
+        <h3 id ="question_box"></h3>
+      </div>
+        <div class="quiz_options">
+          <ul id ="quiz_ul">
+            <li>
+              <div class = "option" id ="opt1" onclick="button(this)">
+              </div>
+            </li>
+            <li>
+              <div class = "option" id ="opt2" onclick="button(this)">
+              </div>
+            </li>
+            <li>
+              <div class = "option" id ="opt3" onclick="button(this)">
+                  
+              </div>
+            </li>
+            <li>
+              <div class = "option" id ="opt4" onclick="button(this)">
+              </div>
+            </li>
+          </ul>
+        <!-- <img src="{{ url_for('static', filename='{{img}}') }}" alt="forex-img"> -->
+        <img src={{img}} alt="">
+        </div>
+    </div>
+  </div>
+{% endblock %}
