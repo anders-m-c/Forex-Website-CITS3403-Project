@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" class="loginform">
+        {{ form.hidden_tag() }}
+        <h1>Create Account</h1>
+        <hr id="hrform">
+        <p>
+            {{ form.username(size=32, placeholder='Username') }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email(size=64, placeholder='Email') }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password(size=32, placeholder='Password') }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2(size=32, placeholder='Confirm Password') }}<br>
+            {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

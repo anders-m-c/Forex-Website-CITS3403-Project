@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block signin %}
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='images/background2.jpg') }}") no-repeat;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" novalidate class="loginform">
+        {{ form.hidden_tag() }}
+        <h1>Sign In</h1>
+        <hr id = "hrform">
+        <p>
+            {{ form.username(size=32, placeholder='Username') }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p id='password'>
+            {{ form.password(size=32, placeholder='Password') }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+
+        <p>New Here?<a href="{{ url_for('signup') }}">&nbsp Create an Account.</a></p>
+    </form>
+{% endblock %}
