@@ -1,12 +1,10 @@
 from flask import render_template, flash, redirect, url_for, request, json
 from app import app, db
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, QuizForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Quiz, Question
 from werkzeug.urls import url_parse
 import json
-
-questionNumber = 0
 
 @app.route('/')
 @app.route('/index')
@@ -52,21 +50,46 @@ def signup():
 def learn():
     return render_template('learn.html', title='Learn')
 
-
-@app.route('/quiz', methods=['GET', 'POST'])
-def quiz():
-    questions2 = Question.query.all()
-    global questionNumber
-    questionNumber += 1
-    return render_template('quiz3.html', title='Test Your Knowledge', ques=questions2, qNum=questionNumber)
-
-@app.route('/quiz/previous', methods=['GET', 'POST'])
-def previous():
-    questions2 = Question.query.all()
-    global questionNumber
-    questionNumber -= 1
-    return render_template('quiz3.html', title='Test Your Knowledge', ques=questions2, qNum=questionNumber)
-
+@app.route('/quiz/<int:id>', methods=['GET', 'POST'])
+def quiz(id):
+    if not current_user.is_authenticated:
+        return redirect(url_for('signin'))
+    attemptNum = current_user.num_attempts
+    if current_user.sessionEnded == 0: #1 = THEY HAVE FINISHED 0 = THEY ARE IN A CURRENT SESSION
+        #get the question number that the user was up to in their last session
+        questionNum = 0
+        quizzes = Quiz.query.all()
+        for q in quizzes:
+            if q.author.username == current_user.username and q.attemptNumber == attemptNum:
+                questionNum = q.questionNum
+                print("question num: {}".format(questionNum))
+        id = questionNum
+    print("this is the id ", id)    
+    if id == 1:
+        quiz = Quiz(attemptNumber=attemptNum+1, result=0, author=current_user, questionNum=1)
+        current_user.num_attempts = current_user.num_attempts + 1
+        current_user.sessionEnded = 0
+        db.session.add(quiz)
+        db.session.commit
+    q = Question.query.get(id)
+    if not q:
+        return redirect(url_for('results'))
+    if request.method == 'POST':
+        #idk if this is right
+        quiz = Quiz.query.outerjoin(User, User.id==Quiz.user_id).filter(User.num_attempts==Quiz.attemptNumber).first()
+        #quiz = Quiz.query.filter_by(attemptNumber=attemptNum).join(User).first()
+        option = request.form['options']
+        print(option)
+        choice = "q{}choice".format(id)
+        quiz.choice = option
+        print(quiz.choice)
+        if option == q.correct_choice:
+            quiz.result = quiz.result + 1
+        quiz.questionNum = quiz.questionNum + 1
+        db.session.commit()
+        print(quiz.choice)
+        return redirect(url_for('quiz', id=(id+1)))
+    return render_template('quiz3.html', q=q, title='Question {}'.format(id), id=id)
 
 
 @app.route('/results', methods=['GET', 'POST'])

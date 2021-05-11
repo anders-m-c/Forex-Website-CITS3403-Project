@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     num_attempts = db.Column(db.Integer, index=True)
+    sessionEnded = db.Column(db.Integer, index=True) #startquiz->set to false(0), finish quiz->set to true(1)
     
     #relationship stuff
     quizzes = db.relationship('Quiz', backref='author', lazy='dynamic')
@@ -31,7 +32,7 @@ class User(UserMixin, db.Model):
 class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     attemptNumber = db.Column(db.Integer, index=True)
-    sessionEnded = db.Column(db.Integer, index=True) #startquiz->set to false(0), finish quiz->set to true(1)
+    questionNum = db.Column(db.Integer, index=True)
     result = db.Column(db.Integer, index=True) #result for that quiz (15/20 ->stores 15)
     q1choice = db.Column(db.String(64), index=True)
     q2choice = db.Column(db.String(64), index=True)
