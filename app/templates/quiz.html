@@ -2,65 +2,82 @@
 
 {% block stylesheet %}
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz3.css') }}">
+<style>
+  html {
+    background: url("{{ url_for('static', filename='images/quiz_background.jpg') }}") no-repeat;
+  }
+</style>
 {% endblock %}
 
-<!-- ADD JAVASCRIPT TO ADD AN EVENTLISTENER TO SEE WHERE SOMEONE CLICKED AND SEE IF ITS CORRECT -->
 {% block javascript %}
 <script>
-  function onload() {
-    let question = '{{ques[qNum].question}}';
-    let choice1 = '{{ques[qNum].choice1}}';
-    let choice2 = '{{ques[qNum].choice2}}';
-    let choice3 = '{{ques[qNum].choice3}}';
-    let choice4 = '{{ques[qNum].choice4}}';
+  function check_click(){
+    //check if they clicked something, if not have an alert
+    let clicks = 0;
+    for(let i=0; i<4; i++){
+      let checker = document.getElementsByClassName('options')[i].checked;
+      if(checker){
+        clicks++;
+      }
+    }
+    if(clicks != 1){
+      alert("You need to select an option!");
+    }
+  }
 
-    document.getElementById('question_box').innerHTML = question;
-    document.getElementById('opt1').innerHTML = choice1;
-    document.getElementById('opt2').innerHTML = choice2;
-    document.getElementById('opt3').innerHTML = choice3;
-    document.getElementById('opt4').innerHTML = choice4;
-    console.log('{{qNum}}');
-    if('{{qNum}}' <= 0){
-      document.getElementById("prev_btn").style.visibility='hidden';
+  function check_click(){
+    //check if they clicked something, if not have an alert
+    let clicks = 0;
+    for(let i=0; i<4; i++){
+      let checker = document.getElementsByClassName('options')[i].checked;
+      if(checker){
+        clicks++;
+      }
+    }
+    if(clicks != 1){
+      alert("You need to select an option!");
     }
   }
 </script>
 {% endblock %}
 
 {% block content %}
-  <div class="quiz_wrapper" onload="onload()">
-    <div class="upper_buttons">
-      <a href="{{ url_for('previous') }}" id ="prev_btn"> &lt Previous</a>
-      <p> Question {{qNum+1}} of 20</p>
-      <a href="{{ url_for('quiz') }}" id ="next_btn"> Next &gt</a>
+<div class="quiz_wrapper">
+  <div class="upper_buttons" >
+    <input type="submit" style="visibility: hidden;" />
+    <p> Question {{ id }} of {{ numQues }}</p>
+    {% if id != numQues %}
+    <input type="submit" name="next_btn" value="Next" form="quiz_form" onclick="check_click()" />    
+    {% elif id == numQues %}
+    <input type="submit" name="next_btn" form="quiz_form"value="Finish" onclick="check_click()" />
+    {% endif %}
+  </div>
+  <div class="wrapper">
+    <div class="quiz_question">
+      <h3 id ="question_box">{{ q.question }}</h3>
     </div>
-    <div class="wrapper">
-      <div class="quiz_question">
-        <h3 id ="question_box"></h3>
-      </div>
-        <div class="quiz_options">
-          <ul id ="quiz_ul">
-            <li>
-              <div class = "option" id ="opt1" onclick="button(this)">
-              </div>
-            </li>
-            <li>
-              <div class = "option" id ="opt2" onclick="button(this)">
-              </div>
-            </li>
-            <li>
-              <div class = "option" id ="opt3" onclick="button(this)">
-                  
-              </div>
-            </li>
-            <li>
-              <div class = "option" id ="opt4" onclick="button(this)">
-              </div>
-            </li>
-          </ul>
-        <!-- <img src="{{ url_for('static', filename='{{img}}') }}" alt="forex-img"> -->
-        <img src={{img}} alt="">
+    <div class="quiz_options">
+      <form method="POST" id = "quiz_form" validate>
+        <div class="radio-toolbar">
+          <input class="options" type="radio" id="option1" name="options" value="{{q.choice1}}" required>
+          <label id="opt1" for="option1">{{ q.choice1 }}</label>
+
+          <input class="options" type="radio" id="option2" name="options" value="{{q.choice2}}" required>
+          <label id="opt2" for="option2">{{ q.choice2 }}</label>
+
+          <input class="options" type="radio" id="option3" name="options" value="{{q.choice3}}" required>
+          <label id="opt3" for="option3">{{ q.choice3 }}</label>
+
+          <input class="options" type="radio" id="option4" name="options" value="{{q.choice4}}" required>
+          <label id="opt4" for="option4">{{ q.choice4 }}</label>
+
+          
         </div>
+      </form>
+      <div class="img_container">
+        <img src="{{ url_for('static', filename='images/purpose-img.jpg') }}" alt="Question {{ id }} image">
+      </div>
     </div>
   </div>
+</div>
 {% endblock %}
