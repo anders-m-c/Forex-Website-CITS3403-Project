@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>
+        What are lots?
+      </h1>
+      <p>
+        A lot is a way to effectively and efficiently communicate standardized quantities of currency transactions.    This is used widely and is preferred by traders as compared to using a specific currency when talking about trades. This is mainly because when you place market orders, they are placed in sizes known as lots.
+      </p>
+      <p>
+        Lots can come in many different sizes. The main ones are:
+      </p>
+      <div class="content_list">
+        <ul>
+          <li>Standard Lot</li>
+          <li>Mini Lot</li>
+          <li>Micro Lot</li>
+          <li>Nano Lot</li>
+        </ul>
+        <p>
+          The standard lot is the equivalent of 100,000 units of any given currency. An example of this is that 1 standard lot of EUR/USD is equal to €100,000.
+        </p>
+        <p>
+          The mini lot, also known as the 0.1 lot is 10,000 units of any given currency. The micro lot, also known as the 0.01 lot is 1,000 units of any given currency.The nano lot, also known as the 0.001 lot is 100 units of any given currency.
+        </p>
+        <h1>
+          Pip Value per Lot Size
+        </h1>
+        <p>
+          You can learn all about pips <a href="{{ url_for('pips') }}">here.</a>
+          Being able to determine the value of each pip, allows us to determine how much profit or loss we are making in a trade. This is done by multiplying the number of pips moved by the value of each pip.
+        </p>
+        <p>
+          We know that the value of a pip is based on the pair being traded, and is a very tiny percentage of a unit of a currency’s value.
+        </p>
+        <p>
+          The value of a pip is defined by the following equation:
+        </p>
+        <div class="content_image smaller">
+          <img src="{{ url_for('static', filename='images/pip-value-formula.png') }}" alt="">
+        </div>
+        <p>
+          The first part of this formula is converting the currency by dividing the pip value according to the pair being traded, by the current exchange rate of that pair. This is then multiplied by the lot size being used.
+        </p>
+        <p>
+          Assume that we are using a mini lot size (0.1 unit lot size). We will use the USD/JPY pair.
+          The base currency in this pair is USD. Therefore, since we are using a mini lot this means that the trade being made is for $10,000 worth of Japanese Yen. The current value for USD/JPY is 103.84.
+          Therefore, we substitute the values into our formula and we get:
+        </p>
+        <div class="content_image smaller">
+          <img src="{{ url_for('static', filename='images/pip-value-example1.png') }}" alt="">
+        </div>
+        <p>
+          Therefore, for every pip that the USD/JPY pair moves (0.01 in price change), we are either profiting or losing $0.96. So, say the price moved up by 10 pips, and we took a long position, we would have profited $9.60 USD.
+        </p>
+        <p>
+          It is important to note here that since the base currency is USD, the result of formula will be in USD too.
+        </p>
+        <p>
+          Assume we are now using a standard lot size (100,000 unit lot size). We will use the EUR/USD pair.
+          The base currency in this pair is EUR. The pair EUR/USD has a current trading price of 1.2227. Applying our formula, we get:
+        </p>
+        <div class="content_image smaller">
+          <img src="{{ url_for('static', filename='images/pip-value-example2.png') }}" alt="">
+        </div>
+        <p>
+          Since our base currency was EUR, our result is in Euros. We can convert this result into AUD using the exchange rate:
+        </p>
+        <h1>
+          Choosing Your Lot Size
+        </h1>
+        <p>
+          Choosing the right lot size to trade with will depend very much on the size of your account and how you manage your risk.
+        </p>
+        <p>
+          For example, say you had an account containing $100 USD. Say you choose to trade with a standard lot with the EUR/USD pair. Since the value per pip is $10 USD, this means if the price moves 10 pips against you, your account will be blown! However, if you chose a smaller lot size, your account will have much more flexibility and can handle 10 pip drawdowns. This option is much more sustainable for your account. As your account becomes bigger and you become more confident in your trading plan, you can start to increase the lot size you trade with.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
