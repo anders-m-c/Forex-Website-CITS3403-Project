@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>
+        What are Pips?
+      </h1>
+      <p>
+        In Forex, a pip is an acronym for “percentage in point” which is used to express the change in value of a currency pair. A pip is the smallest price movement that an exchange rate can make. A pip is usually the last decimal place of a price quote. Most currency pairs are quoted to the fourth decimal place. For example, if the EUR/USD is quoted at 1.2000 and price changes to 1.20001, that would mean an increase of 1 pip. Likewise, if the price changed to 1.1999, that would mean a decrease of 1 pip. Japanese Yen pairs are an exception, as they are quoted to the second decimal place. Pips are used by traders to calculate the profit or loss on a trade.
+      </p>
+      <p>
+        The value of a pip varies between different currency pairs. The pip value can be calculated using the simple formula below. Note: With leverage, these values can become much larger.
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/pip-value-formula2.png') }}" alt="">
+      </div>
+      <p>
+        For EUR/USD = 1.2000,
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/eurusd-pip-value-example.png') }}" alt="">
+      </div>
+      <p>
+        For GBP/JPY = 149.61
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/pip-value-example-gbpjpy.png') }}" alt="">
+      </div>
+
+      <p>
+        The image below will help you learn how to read pips
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/pip-cheat-sheet-forex.png') }}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
