@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css') }}">
+<style>
+    body {
+      background-color:#1a1c33;
+    }
+    .content-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      position: relative;
+    }
+    .content-info {
+      height: 60vh;
+      width: 35vh;
+      margin: 20px;
+      background-color: #1a1c33;
+      position: relative;
+      border-radius: 10px;
+      border: solid 1px white;
+      color: rebeccapurple
+    }
+    .content-info img {
+      height: 25vh;
+      width: 100%;
+      border-radius: 10px 10px 0px 0px;
+      object-fit: cover;
+      /* border-radius: 10px; */
+    }
+    .content-text  {
+      padding: 0 10px;
+    } 
+    .content-text h2 {
+      color: #FFF;
+    }
+    .content-text p {
+      color: hsla(0,0%,100%,.64);
+    }
+    .beginner h1 {
+      justify-content: flex-end;
+      color: #fe2f4d;
+    }
+    .btn-next {
+      text-decoration: none;
+      border: solid 1px #fe2f4d;
+      background-color: 1a1c33;
+      outline: none;
+      width: 600px;
+      height: 100px;  
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 30px;
+      /* height: 100%; */
+    }
+    .btn-next a {
+      height: 100%;
+      color: #FFF;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+    }
+    .content-btn {
+      text-decoration: none;
+      border: solid 2px #fe2f4d;
+      /* background-color: aquamarine; */
+      outline: none;
+      width: 20vh;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 0%;
+    }
+    .content-btn a{
+      text-decoration: none;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    @media screen and (max-width: 900px){
+    .content-row{
+      flex-direction: column;
+    }
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+<div class ="wrapper">
+  <div class="beginner">
+    <h1>Beginner Content</h1>
+  </div>
+  <div class="content-row">
+    <div class="content-info">
+      <a href="{{ url_for('what_is_forex') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.png') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>What is Forex?</h2>
+        <p >Quick introduction into the world's largest market.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('what_is_forex') }}">See More</a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('buying_and_selling') }}"><img src="{{ url_for('static', filename='images/buy-sell-img.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Buying and Selling Currency Pairs</h2>
+        <p>Currency pairs and how to trade them.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('buying_and_selling') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('how_to_make_money') }}"><img src="{{ url_for('static', filename='images/how-to-make-money.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>How to Make Money</h2>
+        <p>Learn how to make money the right way.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('how_to_make_money') }}">See More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-row">
+    <div class="content-info">
+      <a href="{{ url_for('pips') }}"><img src="{{ url_for('static', filename='images/What-is-a-pip2.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Pips</h2>
+        <p >Learn about what a pip is and how to calculate their value.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('pips') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('lot_sizes') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Lot Sizes</h2>
+        <p>Learn how lot sizes will enable you to determine your profit.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('lot_sizes') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('types_of_orders') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Types of Orders</h2>
+        <p>Learn about all the different types of orders available.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('types_of_orders') }}">See More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-row">
+    <div class="content-info">
+      <a href="{{ url_for('demo_vs_real') }}"><img src="{{ url_for('static', filename='images/demo-vs-live-img.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Demo Vs Live</h2>
+        <p >When should you use a demo account?</p>
+        <div class="content-btn">
+          <a href="{{ url_for('demo_vs_real') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('trading_sessions') }}"><img src="{{ url_for('static', filename='images/forex-sessions-img.jpg') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Trading Sessions</h2>
+        <p>Learn the best times of the day to make the most money.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('trading_sessions') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('candles') }}"><img src="{{ url_for('static', filename='images/candlesticks-img.png') }}" alt=""></a>
+      <div  class="content-text">
+        <h2>Candles</h2>
+        <p>What are candlesticks and why are they used?</p>
+        <div class="content-btn">
+          <a href="{{ url_for('candles') }}">See More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-next">
+      <a href="{{ url_for('learn_intermediate') }}">
+      <h3>Intermediate Topics</h3>
+      <p>Take Your Knowledge to the Next Level with our Intermediate Topics</p>
+    </a>
+  </div>
+</div>
+{% endblock %}

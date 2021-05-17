@@ -70,13 +70,14 @@
 
           <input class="options" type="radio" id="option4" name="options" value="{{q.choice4}}" required>
           <label id="opt4" for="option4">{{ q.choice4 }}</label>
-
           
         </div>
       </form>
+      {% if q.img %}
       <div class="img_container">
-        <img src="{{ url_for('static', filename='images/purpose-img.jpg') }}" alt="Question {{ id }} image">
+        <img src="{{ img }}" alt="Question {{ id }} image">
       </div>
+      {% endif %}
     </div>
   </div>
 </div>

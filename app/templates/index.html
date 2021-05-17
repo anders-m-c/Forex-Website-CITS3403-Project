@@ -1,8 +1,282 @@
 {% extends "base.html" %}
 
+{% block stylesheet %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="crossorigin="anonymous"/>
+
+<style>
+  .welcome {
+    background: url("{{ url_for('static', filename='images/home_background.png') }}") no-repeat;
+    /* background: linear-gradient(135deg, #0a225b, #350e47); */
+    height: 100vh;
+    background-size: cover;
+    /* z-index: -1; */
+    /* opacity: 0.9; */
+  }
+
+  .welcome-heading {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20%;
+  }
+
+  .welcome h2 {
+    position: relative;
+    color: white;
+    font-size: 5vh;
+    line-height: 8vh;
+    top: 35vh;
+    left: 10vh;
+    text-shadow: 6px 6px black;
+  }
+
+  .welcome p {
+    position: relative;
+    color: white;
+    font-size: 3vh;
+    line-height: 8vh;
+    top: 35vh;
+    left: 10vh;
+    text-shadow: 6px 6px black;
+  }
+
+  .btns-container {
+    display: flex;
+    flex-direction: row;
+    font-family: "Poppins", sans-serif;
+    color: white;
+  }
+
+  #loginBtn {
+    position: relative;
+    top: 36vh;
+    left: 8vh;
+    border: solid 1px #10dfd8;
+    border-radius: 25px;
+    margin: 20px;
+    padding: 20px;
+    outline: none;
+    cursor: pointer;
+    background: rgba(33, 35, 41, 0.6);
+  }
+
+  #loginBtn a:hover {
+    color: #d81e5b;
+  }
+
+  #signUpBtn a:hover {
+    color: #d81e5b;
+  }
+
+  #loginBtn a {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  #signUpBtn {
+    position: relative;
+    top: 36vh;
+    left: 8vh;
+    border: solid 1px #10dfd8;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 20px;
+    outline: none;
+    background: rgba(33, 35, 41, 0.6);
+    cursor: pointer;
+  }
+
+  #signUpBtn a {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .purpose {
+    background: #2e3b4b;
+    height: 100vh;
+  }
+
+  .description {
+    background: #1F2833;
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh; */
+  }
+
+  .footer {
+    background: black;
+    height: 3vh;
+    padding: 20px;
+
+  }
+  .footer h3{
+    color: white;
+    font-size: 1.3rem;
+  }
+  .footer p{
+    color: white;
+    font-size: 0.9rem;
+  }
+
+  .purpose-heading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .purpose-heading img {
+    height: 50vh;
+    width: 65vh;
+  }
+
+  .purpose-heading h1 {
+    display: inline-block;
+    margin: 5%;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.0rem;
+    /* position: absolute;
+      top: 120%; */
+  }
+
+  .purpose-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  .purpose-text-reverse {
+    width: 30%;
+    /* margin-right: 10%; */
+    /* word-wrap: break-word; */
+  }
+  
+  .purpose-container-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+    /* width: 105%; */
+  }
+
+  .image1 img,.image2 img,
+  .image3 img {
+    object-fit: cover;
+    border-radius: 40px;
+    /* margin: 3%; */
+    height: 35vh;
+    width: 60vh;
+  }
+  .purpose-text {
+    width: 30%;
+  }
+  .purpose-text h2, .purpose-text-reverse h2{
+    text-align: center;
+    border-bottom: solid 1px #fe2f4d;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 1.8rem;
+  }
+  .purpose-text p, .purpose-text-reverse p{
+    text-align: center;
+    /* color: #66FCF1; */
+    color: white;
+  }
+
+  .description-wrapper {
+    margin: 30px 0px;
+  }
+  .disclaimer{
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1000px) {
+    .purpose-container, .purpose-container-reverse{
+      flex-direction: column;
+    }
+    .purpose-text, .purpose-text-reverse{
+      margin-bottom: 20px;
+    }
+  }
+</style>
+{% endblock %}
+
+
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+<section class="welcome">
+  <div class="welcome-heading">
+    <h2 class="heading">Learn the Fundamentals of Forex Trading with Mastering Forex.</h2>
+    <p class="subhead">Escape the classic 9 to 5.</p>
+    {% if current_user.is_anonymous %}
+    <div class="btns-container">
+      <button id="loginBtn"><a href="login.html">Login</a></button>
+      <button id="signUpBtn"><a href="signup.html">Sign Up</a></button>
+    </div>
+    {% endif %}
+  </div>
+
+</section>
+
+<section class="description">
+  <div class="description-wrapper">
+    <div class="purpose-container">
+      <div class="purpose-text">
+        <h2>What is Forex?</h2>
+        <p>
+          The Forex market determines the foreign exchange rate for each currency. It provides people with the power to buy, sell and exhange currencies.
+        </p>
+      </div>
+      <div class="image1">
+        <img src="{{ url_for('static', filename='images/home_page1.jpg') }}" alt="Forex Title">
+      </div>
+    </div>
+    <div class="purpose-container-reverse">
+      <div class="purpose-text-reverse">
+        <h2>Why Learn Forex?</h2>
+        <p>
+          Learn to trade the world's biggest market, allowing you to potentially make money with flexibility.
+        </p>
+      </div>
+      <div class="image2">
+        <img src="{{ url_for('static', filename='images/home_page2.jpg') }}" alt="Forex chart">
+      </div>
+    </div>
+    <div class="purpose-container">
+      <div class="purpose-text">
+        <h2>Make Money Whilst Asleep.</h2>
+        <p>Plan your trade, take your trade and sleep peacefully knowing you're making money.
+        </p>
+      </div>
+      <div class="image3">
+        <img src="{{ url_for('static', filename='images/home_page3.jpg') }}" alt="Forex Chart with Globe">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="purpose">
+  <div class="purpose-heading">
+    <h1>Mastering Forex Aims to Provide the Fundamental Knowledge to Empower the Everday Person</h1>
+    <img src="{{ url_for('static', filename='images/purpose_img.jpg') }}" alt="Person Trading Forex">
+  </div>
+</section>
+<section class="footer">
+  <div class="disclaimer">
+    <p>
+      Written by Anders Christensen and Michael Shawkat (2021) for CITS3403 Project.
+    </p>
+  </div>
+</section>
 {% endblock %}

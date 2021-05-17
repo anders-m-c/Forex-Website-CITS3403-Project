@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>
+        What is Support and Resistance?
+      </h1>
+      <p>
+        One of the most fundamental aspects of trading is understanding the idea of support and resistance levels and how to trade at these levels. Support and resistance trading is one of the most discussed technical analysis techniques used in  the financial markets. It is a technique that allows analysts to quickly establish the overall trend of the market, identify levels to exit the market at a profit or loss and identify
+        points where price may change direction.
+      </p>
+      <p>
+        Support is a price level that price has previously dropped to but failed to break below, while a resistance is a level where the price has previously risen to but struggled to break above. Support is a price level at which the buying interests strong enough to prevent the selling pressure. It is an area on your chart with potential buying pressure. Resistance is the opposite support, as it signifies a price area in which the selling pressure has exceeded the buying pressure causing the price to fall.
+      </p>
+      <h1>
+        How to draw Support and Resistance Zones
+      </h1>
+      <p>
+        Support and resistance can be found at swing highs and swing lows. These levels can easily by identified by zooming out  to a higher timeframe to find the major levels of support and resistance. The higher the timeframe, the stronger the level of support or resistance. This can be done on the weekly, daily, or even 4H timeframe. Horizontal support and resistance can be drawn at price levels where the price has previously reacted. These levels are not exact, they are a
+        zone where price can potentially react to. After locating support and resistance on a higher timeframe, begin marking up lower timeframes to adjust higher timeframe zones.
+      </p>
+      <h1>
+        Zone Flips
+      </h1>
+      <p>
+        When the price of an asset breaks out of support and resistance areas, it is common to see previous levels of support become resistance and vice versa. This is known as a zone flip.
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/zone-flips-example.png') }}" alt="">
+      </div>
+      <h1>
+        Major vs Minor Support and Resistance
+      </h1>
+      <p>
+        Minor support levels are levels which that are not expected to hold. For example, if price is in an uptrend and price pulls that is a level of minor resistance. Price is expected to break the minor resistance level as shown in the diagram below. Minor resistance temporarily slows down price actions, however major resistance can cause the price to reverse in the opposite direction.
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/major-vs-minor-support-img.png') }}" alt="">
+      </div>
+      <h1>
+        Dynamic Support and Resistance
+      </h1>
+      <p>
+        Dynamic support and resistance are not horizontal levels they are constantly changing depending on the previous price action. One of the most popular forms of dynamic support and resistance is moving averages.
+      </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

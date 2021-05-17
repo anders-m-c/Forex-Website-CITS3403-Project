@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>What are Candlestick Charts?</h1>
+      <p>
+        Candlestick charts are used by traders and analysts to track the prices of financial markets. This is not limited to
+        just the Forex market, but are used in the stock market, commodities, indices etc.
+        
+        Being able to understand candlestick charts forms one of the most fundamental skills that traders and analysts utilize.
+        Within these charts are patterns that are read to help indicate the direction of price, and ultimately whether to take a
+        trade or not.
+
+      </p>
+      <h1>What are Candlesticks?</h1>
+      <p>
+        Candlesticks usually consists of a body and two wicks coming out from the top and the bottom of the body. There are two types of candles: bearish and bullish. The bullish candle opens as seen in the figure below. Price can then move down, but then move up to a certain price before then coming down a bit. The lowest price it moves down to is the bottom of the bottom wick. The highest price it reaches is represented by the top of the top wick. Price will then close above its open price, forming a bullish candle. Bearish candles open as seen in the figure below. The price can then move up above the open price, it can also move down and then come back up. The highest price it reaches is represented by the top of the top wick. The lowest price it reaches is represented by the bottom of the bottom wick. The price will then closebelow the open price, forming a bearish candle.
+      </p>
+
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/what-are-candlesticks2-ig-com.png') }}" alt="">
+      </div>
+      <p>
+        Bullish candles are coloured green and bearish candles are coloured red. This is to help traders to quickly identifywhether buyers or sellers are controlling the price.Another thing to consider is the length of the wicks. A long wick on either side of the body of the candle representsstrong rejection of a price level. Additionally, the longer the body of the candle, the more intense the buying orselling pressure is. However, shorter bodies imply that there is very little buying or selling occurring.
+
+      </p>
+      <h1>Timeframes</h1>
+      <p>
+        The candles on a chart last for the timeframe of the chart you are viewing. For example, if you are viewing an AUD/USDchart on a 15-minute timeframe, this means that every candle you see shows the variation of price within 15 minutes. Ifyou view the chart on a 1-hour timeframe, each candle you see represents the variation of price within 1 hour.
+      </p>
+      <p>
+        The following images are screenshots from TradingView. The first image is displaying the AUD/USD chart on a 1-hourtimeframe. As you can see, the candles and hence the price can vary a lot. Below the 1-hour timeframe chart is a 30-minute timeframe chart over the same interval of time. As expected, the number of
+        candles on the 30-minute chart is double the number of candles on the 1-hour chart. Additionally, the smaller timeframes allow you to see extra detail.
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/1-hr-timeframe.png') }}" alt="TradingView 1 Hr Timeframe">
+        <figcaption>1 Hour Timeframe</figcaption>
+      </div>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/30-min-timeframe.png') }}" alt="TradingView 30 minute Timeframe">
+        <figcaption>30 Minute Tiemeframe</figcaption>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

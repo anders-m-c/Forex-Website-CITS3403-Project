@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 
+{% block signin %}
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='images/background2.jpg') }}") no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-    <form action="" method="post" class="loginform">
+    <form action="" method="post" class="loginform" style="height: 76%">
         {{ form.hidden_tag() }}
         <h1>Create Account</h1>
         <hr id="hrform">
+        <p>
+            {{ form.firstname(size=32, placeholder='Firstname') }}<br>
+            {% for error in form.firstname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.lastname(size=32, placeholder='Lastname') }}<br>
+            {% for error in form.lastname.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
         <p>
             {{ form.username(size=32, placeholder='Username') }}<br>
             {% for error in form.username.errors %}

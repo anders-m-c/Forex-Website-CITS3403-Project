@@ -1,47 +1,247 @@
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         {% if title %}
         <title>{{ title }} - Mastering Forex</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/nav-bar.css') }}">
-        {% block stylesheet %}{% endblock %}
         {% else %}
         <title>Mastering Forex</title>
         {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/nav-bar.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        {% block stylesheet %}{% endblock %}
+
+        <style>
+            @keyframes animatetop {
+                from {top:-300px; opacity:0}
+                to {top:50%; opacity:1}
+            }
+            .modal {
+                display: none; 
+                position: fixed; 
+                z-index: 1; 
+                padding-top: 100px; 
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0,0.4);
+                }
+
+            /* Modal Content */
+            .modal-content {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 50%;
+                animation-name: animatetop;
+                animation-duration: 0.6s;
+            }
+
+            /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover, .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            
+            .topnav {
+                overflow: hidden;
+                background-color: black;
+            }
+
+            .topnav a {
+                float: right;
+                display: block;
+                color: #10dfd8;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 1.3em;
+            }
+
+            .topnav .icon {
+            display: none;
+            }
+
+            .dropdown {
+                float: right;
+                overflow: hidden;
+            }
+
+            .dropdown .dropbtn {
+                font-size: 1.3em;    
+                border: none;
+                outline: none;
+                color: #10dfd8;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                right: 0.4vw;
+                background-color: white;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+                z-index: 1;
+            }
+
+            .dropdown-content a {
+                float: none;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+                color: #d81e5b;
+            }
+
+            .nav-contents {
+                transition: transform 0.2s;
+            }
+
+            .nav-contents:hover{
+                transform: translateY(-10px);
+                color: #10dfd8;
+            }
+
+            .dropdown-content a:hover {
+                background-color: white;
+                color: #10dfd8;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            @media screen and (max-width: 785px) {
+                .topnav a:not(:first-child), .dropdown .dropbtn {
+                    display: none;
+                }
+                .topnav a.icon {
+                    float: right;
+                    display: block;
+                }
+            }
+
+            @media screen and (max-width: 785px) {
+                .topnav.responsive {
+                    position: relative;
+                }
+                .topnav.responsive .icon {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+                .topnav.responsive a {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                }
+                .topnav.responsive .dropdown {
+                    float: none;
+                }
+                .topnav.responsive .dropdown-content {
+                    position: relative;
+                }
+                .topnav.responsive .dropdown .dropbtn {
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                }
+            } 
+        </style>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            // Get the modal
+            let modal = document.getElementById("myModal");
+
+            function span_click() {
+                document.getElementById("myModal").style.display='none';
+            }
+
+            // Click outside of modal closes it
+            window.onclick = function(event) {
+                if (event.target != modal) {
+                    document.getElementById("myModal").style.display='none';
+                }
+            }
+
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }
+        </script>
         {% block javascript %}{% endblock %}
     </head>
     {% block signin %}{% endblock %}
-    <body onload="onload()">
-        <div class="navbar_container">
-            <nav class="navbar">
-                <a href="{{ url_for('index') }}" id="logo"> Insert Logo</a>
-                <ul>
-                    <li class="navbar_link"><a href="{{ url_for('index') }}">Home</a></li>
-                    <li class="navbar_link"><a href="{{ url_for('learn') }}">Learn</a></li>
-                    <li class="navbar_link"><a href="{{ url_for('quiz') }}">Test Your Knowledge</a></li>
-                    {% if not current_user.is_anonymous %}
-                    <li class="navbar_link"><a href="{{ url_for('results') }}">Results</a></li>
-                    {% endif %}
-                    
-                    {% if current_user.is_anonymous %}
-                    <li class="navbar_link"><a href="{{ url_for('signin') }}">Sign In</a></li>
-                    <li class="navbar_link"><a href="{{ url_for('signup') }}" id="signup">Sign Up</a></li>
-                    {% else %}
-                    <a href="{{ url_for('logout') }}">Logout</a>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
-        <!--This prints out the flash messages, e.g. Log in to view this page-->
-        <!-- {% with messages = get_flashed_messages() %}
+    <body>
+        
+        <div class="topnav" id="myTopnav">
+            {% if not current_user.is_anonymous %}
+            <div class="dropdown">
+                <button class="dropbtn" style="color: #d81e5b">{{ current_user.firstname }}
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="{{ url_for('profile_page') }}">View Profile</a>
+                  <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+              </div> 
+            {% endif %}
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('signup') }}" id="signup" class="nav-contents">Sign Up</a>
+            <a href="{{ url_for('signin') }}" class="nav-contents">Sign In</a>
+            {% endif %}
+
+            <a href="{{ url_for('results') }}" class="nav-contents">Results</a>
+            <a href="{{ url_for('quiz', id=1) }}" class="nav-contents">Test Your Knowledge</a>
+            <a href="{{ url_for('learn_beginner') }}" class="nav-contents">Learn</a>
+            <a href="{{ url_for('index') }}" class="nav-contents">Home</a>
+
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+          </div>
+        
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+        <!-- The Modal -->
+        <div id="myModal" class="modal" style="display: block;">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" onclick="span_click()">&times;</span>
+                {% for message in messages %}
+                <li class="messages" style="color: black;list-style-type: none;text-align: center;">{{ message }}</li>
+                {% endfor %}
+            </div>
+        </div>
         {% endif %}
-        {% endwith %} -->
+        {% endwith %}
+
         {% block content %}{% endblock %}
     </body>
 </html>

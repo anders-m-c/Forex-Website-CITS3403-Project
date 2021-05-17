@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>
+        Trading Sessions
+      </h1>
+      <p>
+        One of the greatest benefits of the forex market is that it is open 24 hours a day, 5 days a week. This allows investors from all over the globe to trade anytime throughout the week. However, there are certain times which are more active, and it is important to keep track of these. The best time to trade is when the market is most active (more liquidity). As seen in the image above, there are periods when two exchanges are simultaneously open. This means that the number of traders actively buying and selling currency pairs increases, which increases the trading volume and volatility of the market. The forex market can be divided into three trading sessions. This includes Asia session, London session and the New York Session. The London session is the very first session to open is the Sydney Forex market session.
+      </p>
+      <p>
+        The trading hours for each session is summarized below (in AWST)
+      </p>
+      <div class="content_list">
+        <ul>
+          <li>
+            London Session: 3pm to 12am
+          </li>
+          <li>
+            New York / US Session: 8pm to 5am
+          </li>
+          <li>
+            Sydney Session: 5am to 2pm
+          </li>
+          <li>
+            Tokyo Session: 7am to 4pm
+          </li>
+        </ul>
+        <p>
+          22% of trading volume daily occurs in the Asian Session. The major markets in the Asian session are Tokyo and Sydney. During the Asian session, the volatility of pairs with the Japanese yen or Australian dollar experience high volatility while pairs like US dollar and Euro are in consolidation. London is considered the forex capital, with about 55% of daily volume occurs during London session. The volatility of all pairs with the pound sterling and the euro increases.
+        </p>
+        <p>
+          The New York accounts for 23% of transactions. During this session, major US economic announcements are release, resulting with extremely high volatility. Any pairs that contain USD will experience high volatility. The most liquid period of the day occurs when the US session overlaps the London session. This is a suitable trading period for scalpers and day traders. The overlap occurs between 8pm and 12am. During the overlap period it is common for large and fast moves to occur as a large amount of liquidity is being traded.
+        </p>
+        <p>
+          The table below summarizes the average pip movement of the major currency pairs during each forex trading session. The London session generally provides the most movement.
+        </p>
+        <div class="content_image smaller">
+          <img src="{{ url_for('static', filename='images/forex-pair-by-session.png') }}" alt="">
+          <figcaption>Volatility of Forex pairs by Trading Session</figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

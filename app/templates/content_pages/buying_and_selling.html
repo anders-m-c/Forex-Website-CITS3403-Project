@@ -1,155 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="content-style.css">
-  <link rel="stylesheet" href="../main_navbar.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
-  <style>
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
 
-  </style>
-  <title>What Is Forex?</title>
-</head>
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
 
-<body>
-  <!-- Top Navbar -->
-  <div class="navbar_container">
-    <nav class="navbar" style="background-color:#212329;">
-      <a href="index.html" id="logo"> Insert Logo</a>
       <ul>
-        <li class="navbar_link"><a href="../index.html">Home</a></li>
-        <li class="navbar_link"><a href="../learn.html">Learn</a></li>
-        <li class="navbar_link"><a href="../index.html">Test Your Knowledge</a></li>
-        <li class="navbar_link"><a href="../index.html">Results</a></li>
-        <li class="navbar_link"><a href="../login.html">Login</a></li>
-        <li class="navbar_link"><a href="../signup.html" id="signup">Sign Up</a></li>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
       </ul>
-    </nav>
-  </div>
-  <!-- Side Navbar -->
-  <div class="page-wrapper">
-    <div class="content-navbar" id="navbar">
-      <div class="navbar_content_container">
-        <div class="learn-title">
-          <a href="../learn.html" id="learn-title">Beginner Content</a>
-        </div>
-
-        <ul>
-          <li><a href="buying-and-selling.html">Buying and Selling</a></li>
-          <li><a href="how-to-make-money.html">How to Make Money</a></li>
-          <li><a href="pips.html">Pips</a></li>
-          <li><a href="lot-sizes.html">Lots</a></li>
-          <li><a href="types-of-orders.html">Types of Orders</a></li>
-          <li><a href="demo-vs-real.html">Demo Vs Real</a></li>
-          <li><a href="trading-sessions.html">Trading Sessions</a></li>
-          <li><a href="candles.html">Candles</a></li>
-        </ul>
-        <div class="learn-title">
-          <a href="../learn2.html" id="learn-title">Intermediate Content</a>
-        </div>
-        <ul>
-          <li><a href="support-and-resistance.html">Support and Resistance</a></li>
-          <li><a href="trends.html">Trends</a></li>
-          <li><a href="trading-support-and-resistance.html">Trading Support and Reistance</a></li>
-          <li><a href="candlestick-patterns.html">Candlestick Patterns</a></li>
-          <li><a href="moving-averages.html">Moving Averages</a></li>
-        </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
       </div>
-    </div>
-    <div class="content-wrapper">
-      <div class="content">
-        <h1>Candlestick Patterns</h1>
-        <p>
-          These candlesticks have no wicks. White Marubozu candlesticks represent bullish candles. This occurs when the open price is the same as the lowest price and that the close price is equal to the highest price. Black Marubozu candlesticks  represent bearish candles. This occurs when the open price is equal to the highest price and that the close price is equal to the lowest price. These candlesticks are shown below.
-        </p>
-        <div class="content_image smaller">
-          <img src="../images/Marubozu-Candlestick-5.jpg" alt="">
-        </div>
-        <h1>Doji Candlesticks</h1>
-        <p>
-          The Doji candlesticks are those that open and close at the same price. As a result, the body of the candle is reduced to a thin line, instead of a rectangle. These sorts of candles imply that there has been indecision or struggle between buyers and sellers, as neither one of them was able to gain control of price. There are four main types of Doji candles:
-        </p>
-        <div class="content_list">
-          <ul>
-            <li>Gravestone Doji
-              <ul>
-                <li>The gravestone has a long wick on the top and no real body. The bottom wick is small or absent. The large top wick represents rejection of a higher price, therefore denoting bearish sentiment.</li>
-              </ul>
-            </li>
-            <li>Long-Legged Doji
-              <ul>
-                <li>The long-legged doji is shaped in the form of a cross where both the top and bottom wicks are roughly equally long. This type of candlestick indicates that neither the buyers nor sellers have had their say, therefore, denoting uncertainty in market trend.</li>
-              </ul>
-            </li>
-            <li>Dragonfly Doji
-              <ul>
-                <li>The dragonfly doji has a long bottom wick with no real. The top wick is either small or absent. The large top wick represents rejection of a lower price, therefore denoting bullish sentiment.</li>
-              </ul>
-            </li>
-            <li>Four Prince Doji
-              <ul>
-                <li>The 4 Price Doji is a horizontal line with no visible wicks. This candlestick shows that the open, close, low and high price are all the same. This represents significant indecision in market price.
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div class="content_image smaller">
-            <img src="../images/types-of-doji-candlesticks.jpg" alt="">
-          </div>
-          <h1>
-            Hammer and Hanging Man Candlesticks
-          </h1>
-          <p>
-            The inverted hammer and shooting star patterns look similar, but the difference between them depends on whether you are in an uptrend or downtrend. An inverted hammer is a bullish reversal candlestick, whereas a shooting star is a bearish reversal candlestick.  
-          </p>
-          <div class="content_image smaller">
-            <img src="../images/inverted-hammer-and-shooting-star.png" alt="">
-          </div>
-          <h1>
-            Engulfing Candles
-          </h1>
-          <p>
-            The bullish and bearish engulfing candlestick patterns are two candlestick reversal patterns. The bullish engulfing candlestick pattern indicates that a strong move up may occur. This typically occurs when there is a bearish candle immediately followed a bullish candle that ‘engulfs’ the bearish candle. The bearish engulfing candlestick pattern indicates that a strong move down may occur. This typically occurs when a bullish candle is immediately followed by a bearish candle that ‘engulfs’ the bullish candle.
-          </p>
-          <div class="content_image smaller">
-            <img src="../images/bullish-bearish-ingulfing.png" alt="">
-          </div>
-          <h1>
-            Tweezer Tops and Bottoms
-          </h1>
-          <p>
-            Tweezer tops and bottoms are another set of two candlestick reversal patterns. These patterns usually occur after a recent extended up or down trend. As seen in the figure below, the patterns they form look like tweezers. The patterns occur when the first candlestick is the same as the overall trend, and the second is the opposite of the overall trend.  The bottom wicks of each of the candlesticks should be of near-equal length.
-          </p>
-          <div class="content_image smaller">
-            <img src="../images/tweezer-top-bottom.png" alt="">
-          </div>
-          <h1>
-            Evening and Morning Stars
-          </h1>
-          <p>
-            Evening and morning stars are three candlestick reversal patterns that typically occur at the end of a trend. For the evening star, the first candle will be bullish, followed by a second candle, bearish or bullish with a small body, indicating indecision, lastly followed by a bearish candle that closes beyond the midpoint of the first candle. The morning star pattern is the opposite of this.
-          </p>
-          <div class="content_image smaller">
-            <img src="../images/evening-morning-star-pattern.png" alt="">
-          </div>
-          <h1>
-            Three White Soldiers and Black Crows
-          </h1>
-          <p>
-            The three white soldiers and black crows is another set of three candlestick reversal patterns. The three white soldiers pattern occurs when there are three long bullish candles that follow a downtrend. The second of these candles should be bigger than the first candle’s body and should close near its high. This typically is a very strong indication of reversal, especially after an extended downtrend or short period of consolidation. The three black crows pattern is the opposite of the three white soldiers pattern.
-          </p>
-          <div class="content_image smaller">
-            <img src="../images/three-white-soldiers-pattern.png" alt="">
-          </div>
-
-
-        </div>
-      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
     </div>
   </div>
-</body>
 
-</html>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>Buying and Selling Currency Pairs</h1>
+      <p>
+        The simultaneous purchase of one currency and the sale of another is known as forex trade.
+        Currencies are bought and sold in pairs by a broker or dealer. The value of a currency is expressed in comparison to
+        another currency.
+        The euro and the US dollar (EUR/USD) are two examples, as are the British pound and the Japanese yen (GBP/JPY).
+        You buy and sell currency pairs while you deal in the forex market.
+      </p>
+      <p>
+        The relative price of two currencies from two separate countries is known as an exchange rate.
+        Exchange rates fluctuate depending on which currency is more powerful at any given time.
+      </p>
+      <p>
+        There are three types of currency Pairs: the majors, the crosses and the exotics.
+      </p>
+      <p>
+        The US dollar is still included in the major currency pairs.
+        The US dollar is not used in cross-currency pairs. Crosses involving any of the big currencies are called "minors."
+        One major currency and one currency from a developing market make up exotic currency pairs (EM).
+      </p>
+      <h1>
+        Major Currency Pairs
+      </h1>
+      <p>
+        The following currency pairs are known as the "majors."
+        They are the most often sold pairs and they all have the US dollar (USD) on one hand.
+        Price swings more often with the majors than with crosses and exotics, providing more trade options.
+      </p>
+      <p>
+        The majors are the world's most liquid markets.
+        It is calculated in forex based on the number of active traders buying and selling a particular currency pair, as well
+        as the amount exchanged.
+        The higher the liquidity of something, the more often it is sold.
+        The EUR/USD currency pair, for example, is traded with more individuals and in higher amounts than the AUD/USD currency
+        pair.
+      </p>
+      <h1>
+        The Exotic Currency Pairs
+      </h1>
+      <p>
+        One main currency is combined with the currency of a developing market, such as Brazil, Mexico, Chile, Turkey, or
+        Hungary, to form exotic currency pairs.
+      </p>
+      <p>
+        You can see the following exotic currency pairs depending on your forex broker, so it's important to know what they are.
+        Keep in mind that while these pairs aren't as common as the "majors" or "crosses," the transaction costs of exchanging
+        them are generally higher.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,15 +1,13 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, QuizForm
+from app.forms import LoginForm, RegistrationForm, QuizForm, ResetEmailForm, ResetPasswordForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Quiz, Question, Answer
 from werkzeug.urls import url_parse
-from app.controllers import UserController, QuizController, QuestionController
+from app.controllers import QuizController, QuestionController, AnswerController
 import populate_database
 from sqlalchemy import and_
 
-from plotly.offline import plot
-from plotly.graph_objs import *
 from flask import Markup
 import plotly.express as px
 
@@ -36,7 +34,6 @@ def signin():
         return redirect(next_page)
     return render_template('signin.html', title='Sign In', form=form)
 
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -54,6 +51,22 @@ def signup():
     return render_template('signup.html', title='Sign Up', form=form)
 
 
+@app.route('/profile_page', methods=['GET', 'POST'])
+def profile_page():
+    password_form = ResetPasswordForm()
+    email_form = ResetEmailForm()
+    
+    if password_form.validate_on_submit():
+        current_user.set_password(password_form.password.data)
+        db.session.commit()
+        flash("Your password has been changed.")
+        return redirect(url_for('signin'))
+    elif email_form.validate_on_submit():
+        current_user.email = email_form.email.data
+        flash("Your email has been changed.")
+        return redirect(url_for('signin'))
+    return render_template('profile.html', title='Profile', password_form=password_form, email_form=email_form)
+
 @app.route('/learn_beginner', methods=['GET', 'POST'])
 def learn_beginner():
     return render_template('learn_beginner.html', title='Learn - Beginner')
@@ -64,44 +77,42 @@ def learn_intermediate():
 
 @app.route('/quiz/<int:id>', methods=['GET', 'POST'])
 def quiz(id):
-    print("new qnum: ", id)
     if not current_user.is_authenticated:
         flash('You must log in to view the quiz.')
         return redirect(url_for('signin'))
     
-    numQuestions = QuestionController.get_number_of_questions()
+    numQuestions = QuestionController.get_number_questions()
     attemptNum = current_user.num_attempts
     #if it is not the start of a new quiz - get the user to their last saved question
-    print("THIS IS THE ATTEMP NUM: ", attemptNum)
-    print("CURRENT_USER: ", current_user.sessionEnded)
-    if current_user.sessionEnded == 0:#1 = THEY HAVE FINISHED 0 = THEY ARE IN A CURRENT SESSION
-        print("FFS")
+    if current_user.sessionEnded == 0: #1 = THEY HAVE FINISHED 0 = THEY ARE IN A CURRENT SESSION
         #get the question number that the user was up to in their last session
         questionNum = 0
         quizzes = Quiz.query.all()
         for q in quizzes:
             if q.author.username == current_user.username and q.attemptNumber == attemptNum:
-                print("this the questionNum1", q.questionNum)
                 questionNum = q.questionNum
-                print("question num: {}".format(questionNum))
         id = questionNum
-    populate_database.print_quiz()
-    print("this is the id ", id)    
     
     #If it is the start of a new quiz - create a new quiz entry in the database
-    if id == 1:
-        print("CREATING A QUIZ")
+    if current_user.get_latest_quiz() == None:
         quiz = Quiz(attemptNumber=attemptNum+1, result=0, author=current_user, questionNum=1)
         db.session.add(quiz)
         current_user.num_attempts = attemptNum + 1
         current_user.sessionEnded = 0
         db.session.commit()
-        print('ADDED TO DB')
-    print("HELLOOOO")
+    attemptNum = current_user.num_attempts
+    if id == 1 and current_user.get_latest_quiz().questionNum != 1:
+        quiz = Quiz(attemptNumber=attemptNum+1, result=0, author=current_user, questionNum=1)
+        db.session.add(quiz)
+        current_user.num_attempts = attemptNum + 1
+        current_user.sessionEnded = 0
+        db.session.commit()
     attemptNum = current_user.num_attempts
     #get the next question
     q = Question.query.get(id)
     if not q:
+        quiz_current = current_user.get_latest_quiz()
+        quiz_current.questionNum = quiz_current.questionNum - 1
         current_user.sessionEnded = 1
         db.session.commit()
         return redirect(url_for('results'))
@@ -111,63 +122,63 @@ def quiz(id):
         quiz = Quiz.query.filter(and_(Quiz.attemptNumber==attemptNum, Quiz.user_id==current_user.id)).first()
         
         option = request.form['options']
-        print(option)
         
         answer = Answer(questionNum=id, choice=option, author=quiz)
         db.session.add(answer)
         if option == q.correct_choice:
             quiz.result = quiz.result + 1
         quiz.questionNum = quiz.questionNum + 1
-        print("this the questionNum2", quiz.questionNum)
         db.session.commit()
-        print("question num: ", id)
         return redirect(url_for('quiz', id=(id+1)))
-    return render_template('quiz3.html', q=q, title='Question {}'.format(id), id=id, numQues=numQuestions, img=image_file)
+    return render_template('quiz.html', q=q, title='Question {}'.format(id), id=id, numQues=numQuestions, img=image_file)
 
 
 @app.route('/results', methods=['GET', 'POST'])
-@login_required
 def results():
+    if not current_user.is_authenticated:
+        flash('You must log in to view results.')
+        return redirect(url_for('signin'))
+    quiz = current_user.get_latest_quiz()
+    if quiz == None or current_user.num_attempts == 0:
+        flash('Quiz has not been completed yet')
+        return redirect(url_for('quiz', id=1))
+    
     questions = Question.query.all()
     
-    plots = []
-    
-    choices = [0, 0, 0, 0]
-    
-    # how many choose choice 1... 
-    answers = Answer.query.all()
-    
-    for ques in questions:
-        for ans in answers:
-            if ans.questionNum == ques.id:
-                if ans.choice == ques.choice1:
-                    choices[0] = choices[0] + 1
-                elif ans.choice == ques.choice2:
-                    choices[1] = choices[1] + 1
-                elif ans.choice == ques.choice3:
-                    choices[2] = choices[2] + 1
-                elif ans.choice == ques.choice4:
-                    choices[3] = choices[3] + 1
-        names = [ques.choice1, ques.choice2, ques.choice3, ques.choice4]
-        fig = px.pie(values=choices, names=names, width=300, height=300)
-        fig.layout.update(showlegend=False)
-        div = fig.to_html(full_html=False)
-        plots.append(Markup(div))
-        choices = [0, 0, 0, 0]
-    
-    quiz = Quiz.query.filter(Quiz.attemptNumber==current_user.num_attempts).first()
-    print("QUIZZZ: ", quiz.id)
+    plots = AnswerController.make_piegraphs()
+    histrogram = AnswerController.make_histrogram()
+    quiz = current_user.get_latest_quiz()
     previous_quiz_answers = Answer.query.filter(Answer.quiz_id==quiz.id).all()
     attempted_questions = len(previous_quiz_answers)
     
-    return render_template('results.html', title='Results', questions=questions, div_placeholder=plots, previous_quiz_answers=previous_quiz_answers, attempted_questions=attempted_questions)
+    result = quiz.result
+    numQues = QuestionController.get_number_questions()
+    result_str = "You scored: {} out of {}, achieving {:.1f}%".format(result, numQues, result/numQues*100)
+    quiz_attempt = quiz.attemptNumber
+
+    average_mark = QuizController.get_average_result() #mark
+    average_mark_str = "Average Mark of all Users: {:.1f} out of {}".format(average_mark, numQues)
+    if numQues != 0:
+        average_percent = average_mark/numQues * 100
+        average_percent_str = "Average Percentage of all Users: {:.1f}%".format(average_percent)
+    else:
+        average_percent_str = "Average Percentage of all Users: 0%"
+    numAttempts = QuizController.get_total_attempts()
+    
+    leaderboard = QuizController.get_leaderboard()
+    passrate = QuizController.get_passrate()
+    passrate_str = "Pass Rate of all Users: {:.1f}%".format(passrate)
+    
+    return render_template('results.html', title='Results', questions=questions, piegraphs=plots, \
+        previous_quiz_answers=previous_quiz_answers, attempted_questions=attempted_questions, \
+        result=result_str, average_mark=average_mark_str, average_percent=average_percent_str, \
+        numAttempts=numAttempts, leaderboard=leaderboard, passrate=passrate_str, histrogram=histrogram,\
+        attempt=quiz_attempt)
 
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-
 
 @app.route('/what_is_forex')
 def what_is_forex():

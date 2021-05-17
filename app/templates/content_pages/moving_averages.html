@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>Moving Averages</h1>
+      <p>
+        The moving average (MA) is a simple technical analysis tool that smooths out price data by creating a constantly updated
+        average price. The average is taken over a specific period of time, like 10 days, 20 minutes, 30 weeks or any time
+        period the trader chooses. There are advantages to using a moving average in your trading, as well as options on what
+        type of moving average to use.
+      </p>
+      <h1>
+        Why moving averages are important?
+      </h1>
+      <p>
+        On a price curve, a moving average will help reduce the volume of "noise." To get a general understanding of the way the
+        market is going, look at the direction of the moving average. If it's angled up, the price is rising overall; if it's
+        angled down, the price is falling overall; and if it's going horizontally, the price is most likely in a range.
+      </p>
+      <h1>Dynamic Support and Resistance</h1>
+      <p>
+        A moving average can also serve as resistance or support. A 50-day, 100-day, or 200-day moving average will serve as a
+        support level in an uptrend, as seen in the chart below. Since the average serves as a floor (support), the price rises
+        when it hits it. A moving average will serve as resistance in a downtrend; like a ceiling, the price reaches the plateau
+        and then begins to fall again.
+      </p>
+      <p>
+        Moving averages aren't necessarily respected by the price.
+        If the price is over a moving average, the direction is generally upward. The trend is down if the price is below a
+        moving average. Moving averages, on the other hand, may have varying lengths (which will be addressed shortly), so one
+        MA may mean an uptrend while another indicates a downtrend.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

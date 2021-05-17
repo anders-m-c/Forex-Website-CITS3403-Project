@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<style>
+  body {
+    background-color:#1a1c33;
+  }
+  .content-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+  .content-info {
+    height: 60vh;
+    width: 35vh;
+    margin: 20px;
+    background-color: #1a1c33;
+    position: relative;
+    border-radius: 10px;
+    border: solid 1px white;
+    color: rebeccapurple
+  }
+  .content-info img {
+    height: 25vh;
+    width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    object-fit: cover;
+    /* border-radius: 10px; */
+  }
+  .content-text  {
+    padding: 0 10px;
+  } 
+  .content-text h2 {
+    color: #FFF;
+  }
+  .content-text p {
+    color: hsla(0,0%,100%,.64);
+  }
+  .intermediate h1 {
+    justify-content: flex-end;
+    color: #fe2f4d;
+  }
+  .btn-next {
+    text-decoration: none;
+    border: solid 1px #fe2f4d;
+    background-color: 1a1c33;
+    outline: none;
+    width: 600px;
+    height: 100px;  
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    /* height: 100%; */
+  }
+  
+  .btn-next a {
+    height: 100%;
+    color: #FFF;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .content-btn {
+    text-decoration: none;
+    border: solid 2px #fe2f4d;
+    /* background-color: aquamarine; */
+    outline: none;
+    width: 20vh;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0%;
+  }
+  .content-btn a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+@media screen and (max-width: 900px){
+  .content-row{
+    flex-direction: column;
+  }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+  <div class="intermediate">
+    <h1>Intermediate Content</h1>
+  </div>
+  <div class="content-row">
+  
+    <div class="content-info">
+      <a href="{{ url_for('support_and_resistance') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.jpg') }}" alt=""></a>
+      <div class="content-text">
+        <h2>Support and Resistance</h2>
+        <p>Learn to identify levels of support and resistance.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('support_and_resistance') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('trends') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.jpg') }}" alt=""></a>
+      <div class="content-text">
+        <h2>Trends</h2>
+        <p>​Learn to identify major trends in price.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('trends') }}">See More</a>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <div class="content-row">
+    <div class="content-info">
+      <a href="{{ url_for('candlestick_patterns') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.jpg') }}" alt=""></a>
+      <div class="content-text">
+        <h2>Candlestick Patterns</h2>
+        <p>What are candlestick patterns and how to easily identify them.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('candlestick_patterns') }}">See More</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-info">
+      <a href="{{ url_for('moving_averages') }}"><img src="{{ url_for('static', filename='images/what-is-forex-img.jpg') }}" alt=""></a>
+      <div class="content-text">
+        <h2>Moving Averages</h2>
+        <p>Learn the different types of moving averages.</p>
+        <div class="content-btn">
+          <a href="{{ url_for('moving_averages') }}">See More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>Demo Vs Live Trading</h1>
+      <p>
+        Demo accounts allow traders to trade using fake money by mimicking live forex markets. This is also known as paper trading. This allows them to experience trading forex markets with a certain broker without putting any risk in. These accounts are free to set up and allow you to trade with many different starting balances.
+      </p>
+      <p>
+        A caveat to trading using a demo account is that you will take trades without feeling the real emotion of risking your own money. This is what brokers want you to feel, so that when you trade on their platform, you feel good, eventually leading to you opening a live account and depositing real money.
+      </p>
+      <p>
+        For this reason, you should take demo trading seriously. You should use this account as an opportunity to develop a  strategy that provides you with consistent wins. There will be losses, but as discussed previously, as long as you have good risk management, consistent wins will result in profit. This process can take some time, so be patient. If you are impatient and do not develop a profitable strategy, the chances of you blowing your account when trading on a live account, with emotion factored in, becomes very high.
+      </p>
+      <p>
+        A recommendation to demo trading is to start off by setting the starting balance of your account to somewhere near to what you will actually start with. Then, pick one of the major currency pairs to trade with first. Having to focus on many pairs at once becomes information overload. By focusing on one pair, this will allow you to develop a strategy that works consistently for that pair. Before trading on a live account with other pairs, test your strategy on those other pairs using a demo account first, as that strategy may not transcend across all pairs. Even experienced traders still come back to their demo account to try our new strategies and tools before using them on their live accounts. Demo trading will also expose you to different market conditions that you will need to adjust to and adapt your strategy around. You should also use the demo account as an opportunity for you to manage your emotions to avoid falling into fear, greed or hope.
+      </p>
+      <div class="content_image">
+        <img src="{{ url_for('static', filename='images/demo-vs-live-content2.jpg') }}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

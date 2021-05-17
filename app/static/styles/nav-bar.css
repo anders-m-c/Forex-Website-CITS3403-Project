@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+} 
+body {
+    /* background-color: #10dfd8; */
+    /* background-color: rgba(16, 223, 216, 0.3); */
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    /* Makes Unselectable */
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.loginform {
+    text-align: center;
+    width: 50%;
+    padding: 20px;
+    background-color:#212329;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 25px;
+    border: solid 3px rgb(251, 255, 0);
+    opacity: 0.96;
+    height: 50%;
+    max-width: 500px;
+}
+#hrform {
+    width: 100px;
+    height: 1.5px;
+    border: 0;
+    background-image: linear-gradient(45deg, rgb(248, 34, 34), blue );
+    margin: auto;
+}
+.loginform h1{
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.loginform input[type = "text"], .loginform input[type = "password"] {
+    margin: 10px auto;
+    background: none;
+    text-align: center;
+    border: 2px solid #10dfd8;
+    padding: 14px 10px;
+    width: 67%;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: 0.3s;
+} 
+.loginform input[type = "text"]:focus, .loginform input[type = "password"]:focus {
+    width: 85%;
+    border-color: #0652DD;
+}
+form.loginform {
+    overflow-y: auto;
+}
+.loginform input[type = "submit"] {
+    border: 0;
+    margin: 10px auto;
+    background: none;
+    text-align: center;
+    border: 2px solid #10dfd8;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    font-weight: 1000;
+    border-radius: 30px;
+} 
+.loginform input[type = "submit"]:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 7px #38d39f70;
+    transform: translateY(-1px);
+} 
+.loginform a {
+    text-decoration: none;
+    color: #10dfd8;
+}
+ .loginform input::placeholder { /* Makes all placeholder text white*/
+    color: white;
+}
+
+#signup {
+    color: #d81e5b;
+}
+
+#logo {
+    text-decoration: none;
+    color: inherit;
+    float: left;
+    padding: 20px;
+}
+#rememberme, #create {
+    color: white;
+}
+@media screen and (max-width: 1300px) {
+    .loginform input[type = "text"], input[type = "password"] {
+        padding: 10px 5px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .loginform {
+        width: 550px;
+        /* height: 60%; */
+        /* max-height: 50%; */
+
+    }
+
+}

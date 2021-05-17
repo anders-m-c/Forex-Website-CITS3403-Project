@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>What are Trends</h1>
+      <p>
+        A trend is the tendency of prices to move in a certain direction over a period of time. The trend can be long-term, short-term, upward, downward, or even horizontal. The success of investing in the foreign exchange market is related to the ability of investors to identify trends and position themselves for profitable entry and exit points. This article examines the various stages of foreign exchange trends and how they affect investors.
+      </p>
+      <h1> What is the difference Between Trends and Ranges</h1>
+      <p>
+        The simplest identifier for the direction of a trend is the highest low in an uptrend and the lowest high in a downtrend. Some people define a trend as a deviation from the range indicated by the BollingerBand® "band". For others, a trend occurs when prices are constrained by a 20-period simple moving average (SMA) sloping up or down.
+      </p>
+      <p>
+        A limited range market refers to a market where prices rebound between a specific high price and a low price. The price does not seem to fall below the support level. Market movements can be divided into horizontal, range or sideways. Range bound markets are also sometimes called a "choppy market". In these choppy market conditions, there is no clear direction for traders. Price just keeps ranging upwards and downwards.
+      </p>
+      <p>
+        The price range seen in a volatile market can be small or large, but if there is a small range, it means that the market is in a state of lateral trading or consolidation. The opposite of the range market is the trend market. In a trending market, the price moves in only one direction, that is, up or down, but not sideways. There may be some small fluctuations in prices, but nothing can influence the general direction of the trend. The trend can last for several minutes or hours, or even several weeks or months to reflect the long-term trend.
+      </p>
+      <h1>
+          What is Range Trading
+      </h1>
+      <p>
+        Range trading can be defined as a trading method designed to benefit from market conditions where prices fluctuate horizontally. The main argument for this trading method is based on the fact that prices are actually trading sideways most of the time. Therefore, the main idea of ​​range trading is to find a certain range in the market and seek the highest price and the highest price. Sell. Buy at the bottom of the range.
+      </p>
+      <p>
+        The range does not have to be a horizontal range, but it can be any form that includes the price within a certain period of time. Consolidation patterns (such as markers, triangles, and channels) can also be considered ranges, and if they appear over a longer period of time, you can trade. Typically, the trading range will be defined in a longer time frame, while traders will look for entry opportunities in a shorter time frame.
+      </p>
+      <p>
+        One thing to keep in mind when trading ranges is that prices often act unexpectedly and with volatility. It is important to be aware of this and not overly believe in a particular trade and hold it for too long, because at the end of the day, the market can break out of the range in either direction. However, as long as the price is contained within this range, the support and resistance areas will remain valid.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

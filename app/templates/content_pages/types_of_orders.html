@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Side Navbar -->
+<div class="page-wrapper">
+  <div class="content-navbar" id="navbar">
+    <div class="navbar_content_container">
+      <div class="learn-title">
+        <a href="{{ url_for('learn_beginner') }}" id="learn-title">Beginner Content</a>
+      </div>
+
+      <ul>
+        <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
+        <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
+        <li><a href="{{ url_for('pips') }}">Pips</a></li>
+        <li><a href="{{ url_for('lot_sizes') }}">Lots</a></li>
+        <li><a href="{{ url_for('types_of_orders') }}">Types of Orders</a></li>
+        <li><a href="{{ url_for('demo_vs_real') }}">Demo Vs Real</a></li>
+        <li><a href="{{ url_for('trading_sessions') }}">Trading Sessions</a></li>
+        <li><a href="{{ url_for('candles') }}">Candles</a></li>
+      </ul>
+      <div class="learn-title">
+        <a href="{{ url_for('learn_intermediate') }}" id="learn-title">Intermediate Content</a>
+      </div>
+      <ul>
+        <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
+        <li><a href="{{ url_for('trends') }}">Trends</a></li>
+        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
+        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
+        <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="content">
+      <h1>
+        Types of Orders
+      </h1>
+      <div class="content_list">
+        <ul>
+          <li>Market</li>
+          <li>Limit</li>
+          <li>Stop</li>
+        </ul>
+      </div>
+      <p>
+        A market order is instantly executed to buy or sell a currency pair at the best available price. In such volatile markets, it is common for slippage to occur on market orders. Slippage is the difference between the expected price of a  trade and the price at which the trade is executed. One of the main benefits of using market orders is that they guarantee trade execution, however possibly at an unfavorable rate if the market conditions are volatile.
+      </p>
+      <p>
+        Unlike market orders, limit orders are not executed immediately. A limit is an instruction to trade if the price of the market reaches a particular level that is more favorable that the current price. A buy limit order is placed below the current price, if the market reaches that price level, the buy order is executed. Sell limit orders work in the same way, however they are always placed above the current price. Limit orders are beneficial when you are unable to monitor the market, limits can be set and are automatically filled at your desired price. Additionally, limits ensure that your order will be filled at your desired price, or sometimes a slightly better price if available.
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/sell-limit-example.png') }}" alt="">
+      </div>
+      <p>
+        A stop order is an instruction to trade when the price of the market reaches a particular level that is less favorable that the current price. Essentially, a buy stop is an instruction to buy a currency pair if the market hits your specified higher price. A sell stop is an order to sell the currency pair at your specified lower price. Stop orders are frequently used to enter a breakout trade. For example, a buy stop can be placed above resistance if your chart analysis suggests that the price may break through the key resistance level and continue to rise.
+      </p>
+      <div class="content_image smaller">
+        <img src="{{ url_for('static', filename='images/buy-stop-sell-stop-example.png') }}" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
