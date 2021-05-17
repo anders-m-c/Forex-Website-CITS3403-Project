@@ -29,6 +29,7 @@ Install python3, sqlite
 4. Populate the database by completing the folllowing:
  - Add questions to database: `$python3 populate_database add_questions`
  - Add a user to the database: `$python3 populate_database add_user`
+ - Add quizzes to database (so the histogram in results page is populated): `$python3 populate_database add_user`
  - Print out questions:`$python3 populate_database print_questions`
  - Print out results: `$python3 populate_database print_results`
  - Print out quiz entries: `$python3 populate_database print_quiz`
