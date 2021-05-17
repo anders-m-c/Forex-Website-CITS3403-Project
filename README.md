@@ -76,7 +76,7 @@ Using git and Visual Studio Code
  - Image on [Quiz Page](https://www.google.com/url?sa=i&url=https%3A%2F%2Fmerehead.com%2Fblog%2Fhow-to-make-a-forex-trading-website%2F&psig=AOvVaw33cSHTQo3gRCDZHTeZ6Zvd&ust=1621331320586000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCF0v230PACFQAAAAAdAAAAABAK)
  - Image on [learn page](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cmcmarkets.com%2Fen-gb%2Ftrading-guides%2Fforex-vs-stocks&psig=AOvVaw33cSHTQo3gRCDZHTeZ6Zvd&ust=1621331320586000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCF0v230PACFQAAAAAdAAAAABAQ)
  - Image Used on [learn page](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ibusiness.co.za%2Ffin%2Fgetting-started-with-the-forex-trading-market-the-worlds-number-one-market-the-beginners-ultimate-guide%2F&psig=AOvVaw33cSHTQo3gRCDZHTeZ6Zvd&ust=1621331320586000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCF0v230PACFQAAAAAdAAAAABAc)
- - Image used on[home page](https://moneysmart.gov.au/how-to-invest)
+ - Image used on [home page](https://moneysmart.gov.au/how-to-invest)
 
 
 
