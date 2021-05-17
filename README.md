@@ -28,7 +28,16 @@ Install python3, sqlite
 3. Build the database: `$flask db init`
 4. Populate the database by completing the folllowing:
  - Add questions to database: `$python3 populate_database add_questions`
- - Add a user to the database: `python3 populate_database add_user`
+ - Add a user to the database: `$python3 populate_database add_user`
+ - Print out questions:`$python3 populate_database print_questions`
+ - Print out results: `$python3 populate_database print_results`
+ - Print out quiz entries: `$python3 populate_database print_quiz`
+ - Print out all answers: `$python3 populate_database print_answers`
+ - You can clear the database by:
+   - `$python3 populate_database remove_questions`
+   - `$python3 populate_database remove_users`
+   - `$python3 populate_database remove_answers`
+   - `$python3 populate_database remove_quizzes`
 ```
 This will allow you to login to the website using 
 Username: newuser
