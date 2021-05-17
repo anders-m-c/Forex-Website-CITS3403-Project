@@ -1,6 +1,7 @@
 # CITS3403 Project - Forex Website
 #### Written in 2021
-
+## Purpose 
+The purpose of this website is to educate users on the Forex market and how to trade effectively. The website covers a variety of topics from the fundamentals of forex trading, up to the more advanced topics. This website provides an interactive quiz where users can test their knowledge on the materials covered. Additionally, a results page is included that displays quiz aggregate results, usage statistics and a leaderboard based on quiz results.
 ## Getting Started
 Create a python virtual environment by: `$python3 -m venv venvname`
 
