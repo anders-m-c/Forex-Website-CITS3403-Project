@@ -40,22 +40,6 @@ class UserModelCase(unittest.TestCase):
         db.session.commit()
         self.assertEqual(user2.get_latest_quiz(), None)
         
-    #Test is check_choice correctly checks if the user selects the correct option
-    # def test_check_choice(self):
-    #     user = User(username="anders")
-        
-    #     quiz = Quiz(attemptNumber=1, questionNum=3, result=2, author=user)
-    
-    #Test is get_result correctly outputs the result message of a quiz
-    # def test_get_result(self):
-    #     user = User(username="anders")
-    #     quiz = Quiz(attemptNumber=1, questionNum=20, result=18, author=user)
-        
-    #     percent = 18/20 * 100
-    #     result = "You scored: 18 out of 20, achieving {}%".format(percent)
-        
-    #     self.assertEqual(quiz.get_result(), result)
-        
     #Test is get_number_questions correctly outputs the number of questions in the quiz database
     def test_get_number_questions(self):
         user = User(username="anders")
@@ -178,9 +162,6 @@ class UserModelCase(unittest.TestCase):
         expected_passrate = 3/4 * 100
         
         self.assertEqual(QuizController.get_passrate(), expected_passrate)
-        
-    def test_make_piegraphs(self):
-        pass
 
 if __name__=='__main__':
     unittest.main(verbosity=2)

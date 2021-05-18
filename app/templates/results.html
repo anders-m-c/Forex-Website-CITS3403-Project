@@ -2,7 +2,7 @@
 
 {% block stylesheet %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/idea.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -20,15 +20,16 @@
     <div class="links">
       <a href="#aggregate" style="color: #10dfd8;"><span>Aggregate Results</span></a>
     </div>
+    {% if leaderboard|length != 0 %}
     <div class="links">
       <a href="#leaderboard" style="color: #10dfd8;"><span>Leaderboard</span></a>
     </div>
+    {% endif %}
   </section>
 </section>
 
-
-<section id="main-dashboard-content">
-  <h1 id="welcome-title">Results for quiz attempt {{ attempt }}</h1>
+<section id="results_dash">
+  <h1 id="results_title">Results for quiz attempt {{ attempt }}</h1>
   
   <section id="grid-container">
     <div class="grid-item three" id="aggregate">
@@ -45,32 +46,32 @@
       {% endif %}
       <ul>
         {% if (q.choice1 == q.correct_choice) and (attempted_questions >= q.id) %}
-        <li style="color: greenyellow;"> {{ q.choice1 }} </li>
+        <li style="color: rgb(0, 255, 0);"> {{ q.choice1 }} </li>
         {% else %}
         <li> {{ q.choice1 }} </li>
         {% endif %}
 
         {% if (q.choice2 == q.correct_choice) and (attempted_questions >= q.id) %}
-        <li style="color: greenyellow;"> {{ q.choice2 }} </li>
+        <li style="color: rgb(0, 255, 0);"> {{ q.choice2 }} </li>
         {% else %}
         <li> {{ q.choice2 }} </li>
         {% endif %}
 
         {% if (q.choice3 == q.correct_choice) and (attempted_questions >= q.id)  %}
-        <li style="color: greenyellow;"> {{ q.choice3 }} </li>
+        <li style="color: rgb(0, 255, 0);"> {{ q.choice3 }} </li>
         {% else %}
         <li> {{ q.choice3 }} </li>
         {% endif %}
 
         {% if (q.choice4) == q.correct_choice and (attempted_questions >= q.id) %}
-        <li style="color: greenyellow;"> {{ q.choice4 }} </li>
+        <li style="color: rgb(0, 255, 0);"> {{ q.choice4 }} </li>
         {% else %}
         <li> {{ q.choice4 }} </li>
         {% endif %}
       </ul>
     </div>
     <div class="grid-item two">
-      <p style="text-align: center;">Graph displaying how times each option has been chosen for question {{ q.id }}.</p>
+      <p style="text-align: center;">Graph displaying how many times each option has been chosen for question {{ q.id }}.</p>
       {{ piegraphs[q.id-1] }}
     </div>
     {% endfor %}
@@ -85,7 +86,6 @@
     </div>
 
     <div class="grid-item two">
-      <!-- <p>Graph</p> -->
       <p>Total Attempts made by all Users: {{ numAttempts }}</p>
       <p>{{ average_mark }}</p>
       <p>{{ average_percent }}</p>

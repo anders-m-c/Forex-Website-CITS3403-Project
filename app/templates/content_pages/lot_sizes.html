@@ -4,6 +4,18 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
 {% endblock %}
 
+{% block javascript %}
+<script>
+    function reveal_answer() {
+      let reveal_button = document.getElementById("reveal_button");
+      console.log(reveal_button);
+      let activity_answer = document.getElementById("activity_answer");
+      console.log(activity_answer);
+      activity_answer.style.visibility = "visible";
+  }
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Side Navbar -->
 <div class="page-wrapper">
@@ -14,6 +26,7 @@
       </div>
 
       <ul>
+        <li><a href="{{ url_for('what_is_forex') }}">What is Forex</a></li>
         <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
         <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
         <li><a href="{{ url_for('pips') }}">Pips</a></li>
@@ -30,7 +43,6 @@
         <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
         <li><a href="{{ url_for('trends') }}">Trends</a></li>
         <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
-        <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
         <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
       </ul>
     </div>
@@ -111,6 +123,18 @@
         <p>
           For example, say you had an account containing $100 USD. Say you choose to trade with a standard lot with the EUR/USD pair. Since the value per pip is $10 USD, this means if the price moves 10 pips against you, your account will be blown! However, if you chose a smaller lot size, your account will have much more flexibility and can handle 10 pip drawdowns. This option is much more sustainable for your account. As your account becomes bigger and you become more confident in your trading plan, you can start to increase the lot size you trade with.
         </p>
+        <h1>
+          Activity Question:
+        </h1>
+        <div class="content_activity">
+          <h4 class="content_title_question">Using a micro lot size, and given that the current exchange rate of AUD/USD is 0.77457, determine the value per pip.</h4>  
+          <div class="activity_wrapper">
+            <span id="activity_answer" style="visibility: hidden;">
+              Pip Value = $0.129 AUD
+            </span>
+            <button id="reveal_button" onclick="reveal_answer()">Click To Reveal Answer</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

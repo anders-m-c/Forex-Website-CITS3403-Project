@@ -56,6 +56,8 @@ def profile_page():
     password_form = ResetPasswordForm()
     email_form = ResetEmailForm()
     
+    quizzes = Quiz.query.filter(current_user.id==Quiz.user_id).all()
+    
     if password_form.validate_on_submit():
         current_user.set_password(password_form.password.data)
         db.session.commit()
@@ -65,7 +67,7 @@ def profile_page():
         current_user.email = email_form.email.data
         flash("Your email has been changed.")
         return redirect(url_for('signin'))
-    return render_template('profile.html', title='Profile', password_form=password_form, email_form=email_form)
+    return render_template('profile.html', title='Profile', password_form=password_form, email_form=email_form, quizzes=quizzes)
 
 @app.route('/learn_beginner', methods=['GET', 'POST'])
 def learn_beginner():
@@ -101,7 +103,8 @@ def quiz(id):
         current_user.sessionEnded = 0
         db.session.commit()
     attemptNum = current_user.num_attempts
-    if id == 1 and current_user.get_latest_quiz().questionNum != 1:
+    q = Question.query.get(id)
+    if id == 1 and current_user.get_latest_quiz().questionNum != 1 and q != None:
         quiz = Quiz(attemptNumber=attemptNum+1, result=0, author=current_user, questionNum=1)
         db.session.add(quiz)
         current_user.num_attempts = attemptNum + 1
@@ -109,13 +112,15 @@ def quiz(id):
         db.session.commit()
     attemptNum = current_user.num_attempts
     #get the next question
-    q = Question.query.get(id)
+    if not q and id == 1:
+        flash('Questions have not been added yet. Refer to github.')
+        return redirect(url_for('index'))
     if not q:
         quiz_current = current_user.get_latest_quiz()
         quiz_current.questionNum = quiz_current.questionNum - 1
         current_user.sessionEnded = 1
         db.session.commit()
-        return redirect(url_for('results'))
+        return redirect(url_for('results', attemptNum=current_user.num_attempts))
     filelocation = "images/{}".format(q.img)
     image_file = url_for('static', filename=filelocation)
     if request.method == 'POST':        
@@ -133,13 +138,20 @@ def quiz(id):
     return render_template('quiz.html', q=q, title='Question {}'.format(id), id=id, numQues=numQuestions, img=image_file)
 
 
-@app.route('/results', methods=['GET', 'POST'])
-def results():
+@app.route('/results/attempt_number<int:attemptNum>', methods=['GET', 'POST'])
+def results(attemptNum):
+    #if not a user, no access to results
     if not current_user.is_authenticated:
         flash('You must log in to view results.')
         return redirect(url_for('signin'))
-    quiz = current_user.get_latest_quiz()
-    if quiz == None or current_user.num_attempts == 0:
+    
+    #get the quiz attempt
+    quiz = Quiz.query.filter(and_(current_user.id==Quiz.user_id, Quiz.attemptNumber==attemptNum)).first()
+    numQues = QuestionController.get_number_questions()
+    if numQues == 0:
+        flash('Questions have not been added yet. Refer to github.')
+        return redirect(url_for('index'))
+    elif (quiz == None) or (current_user.num_attempts == 0):
         flash('Quiz has not been completed yet')
         return redirect(url_for('quiz', id=1))
     
@@ -147,12 +159,11 @@ def results():
     
     plots = AnswerController.make_piegraphs()
     histrogram = AnswerController.make_histrogram()
-    quiz = current_user.get_latest_quiz()
     previous_quiz_answers = Answer.query.filter(Answer.quiz_id==quiz.id).all()
     attempted_questions = len(previous_quiz_answers)
     
     result = quiz.result
-    numQues = QuestionController.get_number_questions()
+    
     result_str = "You scored: {} out of {}, achieving {:.1f}%".format(result, numQues, result/numQues*100)
     quiz_attempt = quiz.attemptNumber
 

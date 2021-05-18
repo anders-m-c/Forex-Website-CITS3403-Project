@@ -1,0 +1,2 @@
+FLASK_APP=forex_website.py
+FLASK_ENV=production

@@ -4,6 +4,21 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
 {% endblock %}
 
+{% block javascript %}
+<script>
+    function reveal_answer(question) {
+      if(question==1){
+        let activity_answer = document.getElementById("activity_answer1");
+        activity_answer.style.visibility = "visible";
+      }
+      else if(question==2){
+        let activity_answer = document.getElementById("activity_answer2");
+        activity_answer.style.visibility = "visible";
+      }
+  }
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Side Navbar -->
 <div class="page-wrapper">
@@ -14,6 +29,7 @@
       </div>
 
       <ul>
+        <li><a href="{{ url_for('what_is_forex') }}">What is Forex</a></li>
         <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
         <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
         <li><a href="{{ url_for('pips') }}">Pips</a></li>
@@ -29,7 +45,6 @@
       <ul>
         <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
         <li><a href="{{ url_for('trends') }}">Trends</a></li>
-        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
         <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
         <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
       </ul>
@@ -119,6 +134,30 @@
         </p>
         <div class="content_image smaller">
           <img src="{{ url_for('static', filename='images/three-white-soldiers-pattern.png') }}" alt="">
+        </div>
+        <h1>
+          Activity Question 1:
+        </h1>
+        <div class="content_activity">
+          <h2 class="content_title_question">What type of pattern are evening and morning star patterns?</h2>  
+          <div class="activity_wrapper">
+            <span id="activity_answer1" style="visibility: hidden;">
+              They are reversal candlestick patterns
+            </span>
+            <button class="reveal_button" onclick="reveal_answer(1)">Click To Reveal Answer</button>
+          </div>
+        </div>
+        <h1>
+          Activity Question 2:
+        </h1>
+        <div class="content_activity">
+          <h4 class="content_title_question">What does a hammer candlestick pattern signify?</h4>  
+          <div class="activity_wrapper">
+            <span id="activity_answer2" style="visibility: hidden;">
+              It is a bullish reversal pattern that signifies that the bottom is nearby.
+            </span>
+            <button class="reveal_button" onclick="reveal_answer(2)">Click To Reveal Answer</button>
+          </div>
         </div>
       </div>
     </div>

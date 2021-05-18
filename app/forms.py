@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, RadioField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired
+from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, InputRequired, regexp
 from app.models import User
 
 class LoginForm(FlaskForm):
@@ -14,7 +14,7 @@ class RegistrationForm(FlaskForm):
     lastname = StringField('Lastname', validators=[DataRequired()])
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), regexp('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$', message='Minimum eight characters, at least one letter and one number')])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
@@ -33,7 +33,7 @@ class QuizForm(FlaskForm):
     submit = SubmitField('Next')
     
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), regexp('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$', message='Minimum eight characters, at least one letter and one number')])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Change Password')
     

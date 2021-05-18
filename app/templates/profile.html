@@ -2,109 +2,44 @@
 
 
 {% block stylesheet %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta charset="UTF-8">
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-  } 
-  .change_details_container{
-    margin-top: 25px;
-    display: grid;
-    grid-template-columns: 100%;
-    /* grid-auto-rows: 1fr; */
-    grid-gap: 25px;
-    margin-left: 200px;
-    margin-right: 200px;
-  }
-  .change_details {
-    padding: 20px 25px;
-    transition: 400ms margin-left;
-    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
-    height: 250px;
-    border-radius: 25px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* align-items: flex-start; */
-  }
-  .change_details_container{
-    text-align: center;
-  }
-  .change_details input[type="text"],
-  .change_details input[type="password"],
-  .change_details input[type="email"]{
-    height: 30px;
-    border-radius: 25px;
-    padding: 5px;
-    margin: 10px;
-  }
-  .change_details input[type="submit"]{
-    height: 30px;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px;
-    margin: 10px;
-  }
-  /* Chrome Opera and Safari */
-  ::-webkit-input-placeholder {
-    text-align: center;
-  }
-  /* Firefox 18 */
-  :-moz-placeholder {
-    text-align: center;
-  }
-  .change_details input[type="submit"]:hover {
-    background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-2px);
-  }
-  input:focus, textarea:focus, select:focus{
-    outline: none;
-  }
-  .change_details_text {
-    width: 100%;
-  }
-  .inputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  @media (max-width: 1100px) {
-    .change_details_container{
-      grid-template-columns: 100%;
-    }
-  }
-  @media (max-width: 980px) {
-    .quiz_results,
-    .change_details_container {
-      margin: 20px;
-    }
-  }
-</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
 {% endblock %}
 
 {% block content %}
+<section id="sidebar">
+  {% if quizzes %}
+  <section class="title-container">
+    <h1>Quiz Attempt</h1>
+  </section>
+  {% endif %}
+  <section class="links-container">
+    {% for q in quizzes %}
+    <div class="links quiz_attempt">
+      <a href="#{{q.attemptNumber}}"><span>Attempt {{ q.attemptNumber }}</span></a>
+    </div>
+    {% endfor %}
+    <section class="title-container">
+      <h1>Change Details</h1>
+    </section>
+    <div class="links">
+      <a href="#change_password" style="color: #10dfd8;"><span>Change Password</span></a>
+    </div>
+    <div class="links">
+      <a href="#change_email" style="color: #10dfd8;"><span>Change Email</span></a>
+    </div>
+  </section>
+</section>
+<section class="quiz_results">
+  {% for q in quizzes %}
+  <div id="{{ q.attemptNumber }}" class="quiz_info">
+    <h1>Attempt {{ q.attemptNumber }}:</h1>
+    <h2>For this attempt you achieved: {{ q.result }} out of 20</h2>
+    <h2>To view more detailed results for this attempt click <a class="previous_result_link" href="{{ url_for('results', attemptNum=q.attemptNumber) }}">here</a></h2>
+  </div>
+  {% endfor %}
+</section>
 <section class="change_details_container">
-  
-
-
-  <div class="change_details">
+  <div class="change_details" id = "change_email">
     <div class="change_details_text">
       <h3>Change your Email:</h3>
     </div>
@@ -121,9 +56,8 @@
       </form>
     </div>
   </div>
-
   <div class="change_details">
-    <div class="change_details_text">
+    <div class="change_details_text" id = "change_password">
       <h3>Change your Password:</h3>
     </div>
     <div class="inputs">

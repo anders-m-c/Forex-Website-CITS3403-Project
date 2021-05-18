@@ -4,6 +4,18 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/content_style.css') }}">
 {% endblock %}
 
+{% block javascript %}
+<script>
+    function reveal_answer() {
+      let reveal_button = document.getElementById("reveal_button");
+      console.log(reveal_button);
+      let activity_answer = document.getElementById("activity_answer");
+      console.log(activity_answer);
+      activity_answer.style.visibility = "visible";
+  }
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Side Navbar -->
 <div class="page-wrapper">
@@ -14,6 +26,7 @@
       </div>
 
       <ul>
+        <li><a href="{{ url_for('what_is_forex') }}">What is Forex</a></li>
         <li><a href="{{ url_for('buying_and_selling') }}">Buying and Selling</a></li>
         <li><a href="{{ url_for('how_to_make_money') }}">How to Make Money</a></li>
         <li><a href="{{ url_for('pips') }}">Pips</a></li>
@@ -29,7 +42,6 @@
       <ul>
         <li><a href="{{ url_for('support_and_resistance') }}">Support and Resistance</a></li>
         <li><a href="{{ url_for('trends') }}">Trends</a></li>
-        <li><a href="{{ url_for('trading_support_and_resistance') }}">Trading Support and Reistance</a></li>
         <li><a href="{{ url_for('candlestick_patterns') }}">Candlestick Patterns</a></li>
         <li><a href="{{ url_for('moving_averages') }}">Moving Averages</a></li>
       </ul>
@@ -78,6 +90,18 @@
       <p>
         Dynamic support and resistance are not horizontal levels they are constantly changing depending on the previous price action. One of the most popular forms of dynamic support and resistance is moving averages.
       </p>
+      <h1>
+        Activity Question:
+      </h1>
+      <div class="content_activity">
+        <h4 class="content_title_question">True or False: In an uptrend the buying pressure is greater than the selling pressure.</h4>  
+        <div class="activity_wrapper">
+          <span id="activity_answer" style="visibility: hidden;">
+            True
+          </span>
+          <button id="reveal_button" onclick="reveal_answer()">Click To Reveal Answer</button>
+        </div>
+      </div>
       </div>
     </div>
   </div>

@@ -8,7 +8,6 @@
 }
 
 .content-wrapper {
-  max-width: 50vw;
   line-height: 2em;
   text-align: justify;
   left: 20vw;
@@ -109,7 +108,38 @@
 .content_list ul{
   margin-bottom: 10px;
 }
-
+.content_activity {
+  background-color: #1a1c33;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 25px;
+}
+.content_activity h2, .activity_wrapper span, .content_activity h4 {
+  padding: 10px;
+  color: white;
+} 
+.activity_wrapper {
+  width: 99%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+#reveal_button, .reveal_button {
+  padding: 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none
+}
+#reveal_button:active, #reveal_button:hover, .reveal_button:active, .reveal_button:hover{
+  background-color: #d81e5b;
+  color: white;
+  cursor: pointer;
+}
 @media (min-height: 300px) {
   .content-navbar {
     position: sticky;

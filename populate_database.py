@@ -175,30 +175,36 @@ def add_questions():
     print('Populated database with {} questions'.format(numQues))
     return
 
+#Adds random quizzes and assigns them to a random new user
 def add_quizzes():
-    quiz = Quiz(attemptNumber=1, questionNum=20, result=7)
+    u = User(firstname="NewUser2", lastname="NewUser2", username="newuser2", num_attempts=0, sessionEnded=1)
+    db.session.add(u)
+    u.set_password('newuser123')
+    db.session.commit()
+    
+    quiz = Quiz(attemptNumber=1, questionNum=20, result=7, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=1)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=1, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=20)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=20, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=15)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=15, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=14)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=14, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=13)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=13, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=12)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=12, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=11)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=11, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=13)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=13, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=18)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=18, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=8)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=8, author=u)
     db.session.add(quiz)
-    quiz = Quiz(attemptNumber=2, questionNum=20, result=9)
+    quiz = Quiz(attemptNumber=2, questionNum=20, result=9, author=u)
     db.session.add(quiz)
     
     db.session.commit()
@@ -238,10 +244,10 @@ def print_questions():
     for q in questions:
         print(q.question)
        
-def make_user():
+def add_user():
     u = User(firstname="NewUser", lastname="NewUser", username="newuser", num_attempts=0, sessionEnded=1)
     db.session.add(u)
-    u.set_password('forex')
+    u.set_password('forex1234')
     db.session.commit()
     print("Made User")
     
@@ -281,8 +287,8 @@ if __name__=='__main__':
         print_questions()
     elif sys.argv[1] == "remove_questions":
         remove_questions()
-    elif sys.argv[1] == "make_user":
-        make_user()
+    elif sys.argv[1] == "add_user":
+        add_user()
     elif sys.argv[1] == "print_results":
         print_results()
     elif sys.argv[1] == "remove_users":

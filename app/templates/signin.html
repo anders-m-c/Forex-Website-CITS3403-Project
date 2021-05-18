@@ -19,7 +19,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p id='password'>
+        <p>
             {{ form.password(size=32, placeholder='Password') }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>

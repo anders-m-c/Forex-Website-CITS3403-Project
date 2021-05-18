@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz3.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz.css') }}">
 <style>
   html {
     background: url("{{ url_for('static', filename='images/quiz_background.jpg') }}") no-repeat;
@@ -47,9 +47,9 @@
     <input type="submit" style="visibility: hidden;" />
     <p> Question {{ id }} of {{ numQues }}</p>
     {% if id != numQues %}
-    <input type="submit" name="next_btn" value="Next" form="quiz_form" onclick="check_click()" />    
+    <input type="submit" name="next_btn" id='next_btn' value="Next" form="quiz_form" onclick="check_click()" />    
     {% elif id == numQues %}
-    <input type="submit" name="next_btn" form="quiz_form"value="Finish" onclick="check_click()" />
+    <input type="submit" name="next_btn" id='finish_btn' form="quiz_form"value="Finish" onclick="check_click()" />
     {% endif %}
   </div>
   <div class="wrapper">

@@ -10,8 +10,6 @@ html {
      background-size: cover;
 } 
 body {
-    /* background-color: #10dfd8; */
-    /* background-color: rgba(16, 223, 216, 0.3); */
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
@@ -92,7 +90,7 @@ form.loginform {
     text-decoration: none;
     color: #10dfd8;
 }
- .loginform input::placeholder { /* Makes all placeholder text white*/
+ .loginform input::placeholder {
     color: white;
 }
 
@@ -106,9 +104,11 @@ form.loginform {
     float: left;
     padding: 20px;
 }
+
 #rememberme, #create {
     color: white;
 }
+
 @media screen and (max-width: 1300px) {
     .loginform input[type = "text"], input[type = "password"] {
         padding: 10px 5px;
@@ -117,9 +117,5 @@ form.loginform {
 @media screen and (max-width: 1100px) {
     .loginform {
         width: 550px;
-        /* height: 60%; */
-        /* max-height: 50%; */
-
     }
-
 }

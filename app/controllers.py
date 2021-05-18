@@ -100,8 +100,6 @@ class AnswerController():
         data = {result_str:results}
 
         df = pd.DataFrame(data)
-                
-        # df = px.data.tips()
         fig = px.histogram(df, x=result_str, width=550, height = 375)
         div = fig.to_html(full_html=False)
         div2 = Markup(div)
