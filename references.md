@@ -18,4 +18,5 @@
  - Images used on [Support and Resistance](https://fxk1ng.com/support-and-resistance-levels/)
  - Image used on [learn](https://wdrfree.com/stock-vector/pip-logo)
  - Image used on [learn](https://www.fullfinance.com/articles/social-media-and-the-economy/)
+ - Poppins [font](https://fonts.google.com/specimen/Poppins?query=Poppin)
  
