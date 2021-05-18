@@ -54,6 +54,19 @@ When launching the website, it takes you to the home page, explaining the purpos
 
 ## Running the tests
 To run the unit tests: `$python3 tests.py`
+To run the system tests: `$python3 -m systemtest`
+
+Some unit tests include: 
+ - Checking the set password function
+ - Checking the get latest quiz function
+ - Checking the get average results of all quizzes function
+ - Checking the get leaderboard function
+ - Checking the get passrate function
+
+Some system tests include:
+ - Checking if a user can login successfully
+ - Checking if a user can sign up successfully
+ - Checking if a user can navigate through the quiz successfully and be redirected to results page
 
 ## Deployment
 Via localhost
