@@ -65,18 +65,6 @@ Using git and Visual Studio Code
  - Anders Christensen
  - Michael Shawkat
 
-## Acknowledgements
- - Built following the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by Miguel Grinberg.
- - Image used on [homepage](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapercave.com%2Fforex-wallpapers&psig=AOvVaw1hmYIws7KElU0YdGP46WJv&ust=1621330749024000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNjhoPK10PACFQAAAAAdAAAAABAD)
- - Image used on [signup](https://wallpaperaccess.com/forex)
- - Image used on [candlestick patterns](https://www.babypips.com/)
- - Image used on [learn page](https://www.merriam-webster.com/dictionary/vertical)
- - Table on [trading sessions](https://www.babypips.com/)
- - Image on [learn](https://a.c-dn.net/b/1WaXqW/what-is-forex_body_what_is_forex.jpg.full.jpg)
- - Image on [Quiz Page](https://www.google.com/url?sa=i&url=https%3A%2F%2Fmerehead.com%2Fblog%2Fhow-to-make-a-forex-trading-website%2F&psig=AOvVaw33cSHTQo3gRCDZHTeZ6Zvd&ust=1621331320586000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCF0v230PACFQAAAAAdAAAAABAK)
- - Image on [learn page](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cmcmarkets.com%2Fen-gb%2Ftrading-guides%2Fforex-vs-stocks&psig=AOvVaw33cSHTQo3gRCDZHTeZ6Zvd&ust=1621331320586000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCF0v230PACFQAAAAAdAAAAABAQ)
- - Image Used on [learn page](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ibusiness.co.za%2Ffin%2Fgetting-started-with-the-forex-trading-market-the-worlds-number-one-market-the-beginners-ultimate-guide%2F&psig=AOvVaw33cSHTQo3gRCDZHTeZ6Zvd&ust=1621331320586000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCF0v230PACFQAAAAAdAAAAABAc)
- - Image used on [home page](https://moneysmart.gov.au/how-to-invest)
 
 ## Git Logs
 commit 0f101a983ec9672135ff1b6c5e721834bda1ad55
